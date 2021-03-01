@@ -1,0 +1,380 @@
+\label{ch:6}
+
+A gapless signature was identified in an experimental work on \acrshort{rucl} by \cite{Zheng-gapless2017} as a cubic dependence in the spin-lattice relaxation rate, $T_1^{-1} \propto T^3$, at temperatures $2 \text{ K} < T < 10 \text{ K}$ and for \textit{in-plane} fields in the range $ 7.5 \text{ T} < \vert \bf{h} \vert < 12 \text{ T}$.  On the other hand, other experimental group identified a spin gap behavior, $T_1^{-1} \propto \exp(-\Delta/T)$ at field larger than $ 10 \text{ T}$ with the magnon gap $\Delta$ increasing linearly in the paramagnetic phase with increasing magnetic field reaching $\Delta \sim 50 \text{ K}$ at $15 \text{ T}$.
+
+% \cite{Zheng-SM2017}
+
+The goal of this chapter is to compare the theory described in this work with experimental results. As I have presented in the last chapters, the low-energy excitations are free Majorana fermions. Moreover, the linear dispersion of these Majorana fermions gives a gapless signature near the defects that should be compatible with the experimental measurement of \cite{Zheng-gapless2017}.
+
+
+
+In this chapter, I will calculate the spin-lattice relaxation time $T_1$ using the framework from the previous chapter. The representation of the spin operators permits me to calculate the spin-spin correlation in terms of Majorana Green's functions. Finite temperature Green's function formalism will be used.
+
+
+
+
+
+\section{Spin-lattice relaxation rate}
+%\textcolor{red!60!black}{where is the magnetic dependence in \eqref{eq:5-H-eff} $H_{eff}$ ? just in $v$?  }
+%A indirect measurement correlation of nuclear spins can 
+
+The direct connection from the theory to an experiment is made through the measurements of the spin-lattice relaxation time $T_1$. Experimentally, the sample of \acrshort{rucl} is immersed in an external constant magnetic field $\bf{h}$ and acquire a nuclear magnetization. In this experiment, the nuclear spin is associated with the  %are due to the nuclear spins of 
+chlorine atoms $\,^{35}\text{Cl}$, with $I=3/2$. Then one applies a saturating pulse which unbalances the spin population. The relaxation time $T_1$ is obtained by fitting the magnetization as it returns to its equilibrium value\cite{Baek2017}.
+
+% Experimentalists are mores interested in the inverse, $1/T_1$, which is the nuclear spin-lattice relaxation rate. 
+The linear response formula for the nuclear spin-lattice relaxation rate is\cite{Carretta2011,coleman2015}
+\begin{equation}
+    \frac{1}{T_1} \; = \; \frac{\Gamma^2}{2} \, \frac{1}{N}\, \sum_{\bf{q}} \, \vert A_{\text{hf}}(\bf{q}) \vert^2 \, \tilde{S}^{+-}( \bf{q},\omega_0) \; ,  \label{eq:6-rate-t1}
+\end{equation}
+where $\Gamma$ is the nuclear gyromagnetic ratio of the chlorine, $A_{\text{hf}}(q)$ is the hyperfine coupling form factor, $\omega_{0} = \Gamma\,  \vert \bf{h} \vert $ is the Larmor resonance frequency, and $\tilde{S}^{+-}$ is the transverse dynamical spin structure factor. The tilde in $\tilde{S}$ is to distinguish from the spin components $S^{x},S^{y},S^{z}$ relative to the basis $\hat{\bf{x}},\hat{\bf{y}},\hat{\bf{z}}$, here  $\tilde{S}^{+-}$ is transverse to the applied magnetic field $\bf{h}$.
+
+The sum in \eqref{eq:6-rate-t1} runs over the bi-dimensional Brillouin zone, in the low-energy approximation, this sum reduces to the sum along the edges. The expression for the spin-lattice rate that I will use is
+\begin{equation}
+    \frac{1}{T_1} \; = \; \frac{\Gamma^2}{2} \sum_{\alpha = R,L} \, \sum_{q} \, \vert A_{\text{hf}}(q) \vert^2 \, \tilde{S}^{+-}_{\alpha}(q,\omega_0) \; , 
+\end{equation}
+where the transverse dynamical spin structure factor is 
+\begin{equation}
+    \tilde{S}^{+-}_{\alpha}(q,\omega_0) \; = \; \frac{1}{\ell_x}\sum_{x,x'} \, e^{-\im q (x-x')} \, \int_{-\infty}^{\infty} dt \; e^{\im \omega_0 t } \, \left\langle \,  \tilde{S}_{\alpha}^{+}(x,t) \tilde{S}_{\alpha}^{-}(x',0) \,    \right\rangle \;. \label{eq:6-spm}
+\end{equation}
+
+
+The fields $\tilde{S}_{\alpha}^{\pm}  = \tilde{S}^{x}_{\alpha}  \pm \im \tilde{S}^{y}_{\alpha} $ are the raising and lowering spin operators with respect to the quantization axis induced by the magnetic field. The rotated frame $(\hat{\bf{x}}^{\prime},\hat{\bf{y}}^{\prime},\hat{\bf{z}}^{\prime})$ is defined by a polar rotation of angle $\theta$ and azimuthal angle $\phi$ in which $\hat{\bf{z}}$ is sent to $\hat{\bf{z}}^{\prime}$ such that it is parallel to the magnetic field $\bf{h}$. The fields $\tilde{S}^{x}_{\alpha}  = \bf{S}_{\alpha} \cdot\hat{\bf{x}}^{\prime}$ and $\tilde{S}^{y}_{\alpha}  = \bf{S}_{\alpha} \cdot\hat{\bf{y}}^{\prime}$ are the scalar product of the spin operator and the unit vectors $\hat{\bf{x}}^{\prime}$ and $\hat{\bf{y}}^{\prime}$. Following the choice of restricting $\bf{h}$ to the first octant, the angles are restricted to $0<\theta,\phi<\pi/2$. The change of basis is defined by
+\begin{equation}
+\begin{split}
+    \left(
+    \begin{array}{c}
+         \hat{\bf{x}}^{\prime}  \\
+         \hat{\bf{y}}^{\prime} \\
+         \hat{\bf{z}}^{\prime}
+    \end{array} \right)
+    \; = \; \mathrm{R}(\theta,\phi) \, \left(
+    \begin{array}{c}
+         \hat{\bf{x}}  \\
+         \hat{\bf{y}} \\
+         \hat{\bf{z}}
+    \end{array} \right)& \; , \\[8pt] \quad %\text{where} \quad 
+    \mathrm{R}(\theta,\phi) \; = \;
+    \left(
+    \begin{array}{ccc}
+            \cos \theta \cos \phi & \cos \theta \sin  \phi  & - \sin \theta   \\
+            - \sin \phi & \cos  \phi  & 0 \\
+            \sin \theta \cos \phi & \sin \theta \sin  \phi  &  \cos \theta
+    \end{array} \right)& \; .
+\end{split}
+\end{equation}
+Thus, ladder spin operators in this rotated coordinate system are
+\begin{align}
+    \tilde{S}^{\pm}_{\alpha}  \; &= \; S^{x}_{\alpha}  \left( \cos \theta \, \cos \phi \mp \im \sin \phi   \right)+ S^{y}_{\alpha} \left( \cos \theta \, \cos \phi \pm \im \sin \phi   \right)- S^{z}_{\alpha}  \sin \theta  \; .% S^{x}_{\alpha}   \cos \theta \, e^{- \im \phi}  + S^{y}_{\alpha}  \cos \theta \, e^{\im \phi\phantom{-}} - S^{z}_{\alpha}  \sin \theta \; ,  \\
+    %\tilde{S}^{-}_{\alpha}  \; &= \;  S^{x}_{\alpha}   \cos \theta \, e^{\im \phi\phantom{-}}  + S^{y}_{\alpha}  \cos \theta \, e^{-\im \phi} - S^{z}_{\alpha}  \sin \theta \; , 
+\end{align}%and the product of the two spin at position $j$ and at $k$ is 
+%\begin{align}
+%    \begin{split}
+%        \tilde{S}^{+}_{\alpha,j} \tilde{S}^{-}_{\alpha,k} \; &= \; \left( S^{x}_{\alpha,j} S^{x}_{\alpha,k} + S^{y}_{\alpha,j} S^{y}_{\alpha,k}  \right) \left( \cos^2 \theta \, \cos^2 \phi +  \sin^2 \phi   \right) +  S^{z}_{\alpha,j} S^{z}_{\alpha,k} \sin^2 \theta  \\
+%        &+  \,  S^{x}_{\alpha,j} S^{y}_{\alpha,k}\left( \cos \theta \cos \phi - \im \sin \phi   \right)^2 -   S^{y}_{\alpha,j} S^{x}_{\alpha,k}\left( \cos \theta \cos \phi + \im \sin \phi   \right)^2  \\
+%        &-  \left(  S^{x}_{\alpha,j} S^{z}_{\alpha,k} + S^{z}_{\alpha,j} S^{y}_{\alpha,k} \right) \left( \cos \theta \cos \phi - \im \sin \phi   \right) \sin \theta \\
+%        &-  \left(  S^{y}_{\alpha,j} S^{z}_{\alpha,k} + S^{z}_{\alpha,j} S^{x}_{\alpha,k} \right) \left( \cos \theta \cos \phi + \im \sin \phi   \right) \sin \theta        \; .
+%    \end{split}     %\vec{S}_{\alpha,j}\cdot \vec{S}_{\alpha,k} -  \tilde{S}^{z}_{\alpha,j} \tilde{S}^{z}_{\alpha,k} + \im \left( \tilde{S}^{x}_{\alpha,j} \tilde{S}^{y}_{\alpha,k} - \tilde{S}^{y}_{\alpha,j} \tilde{S}^{x}_{\alpha,k} \right)     %\left( S^{x}_{\alpha}S^{x}_{\alpha} + S^{y}_{\alpha}S^{y}_{\alpha} \right) \, \cos^2 \theta + 
+%\end{align}
+The spins can be written in terms of the Majorana fermionic operators, $b^{\gamma}$ and $c$. My choice of edge make all $b^x$ and $b^y$ fermions paired. That is, for non-neighboring sites $j$ and $k$ the correlator between $b$ fermions, $\left\langle b_j^{\alpha} b_k^{\alpha} \right\rangle$, is zero \textit{except} along the edges and for $\alpha = z$.  Therefore, the product of spin that appear in \eqref{eq:6-spm} can be simplified to 
+\begin{equation}
+    \left\langle \,  \tilde{S}_{\alpha}^{+}(x,t) \tilde{S}_{\alpha}^{-}(x',0) \,    \right\rangle  \; = \; \left\langle \,  S_{\alpha}^{z}(x,t) S_{\alpha}^{z}(x',0) \,    \right\rangle  \, \sin^2\theta \; ,
+\end{equation}
+since only the spin $\mathrm{z}$ operator has a non-zero projection in the low-energy chiral edge modes.
+
+%the expectation value of spin operators is the edge has non-zero 
+
+
+Therefore, I can express the rate of $1/T_1$ in terms of the longitudinal structure factor 
+\begin{equation}
+    \frac{1}{T_1} \; = \; \Gamma^2 \,  \frac{\sin^2 \theta}{2} \; \sum_{\alpha = R,L} \, \sum_{q} \, \vert A_{\text{hf}}(q) \vert^2 \, S^{zz}_{\alpha}(q,\omega_0) \; , \label{eq:6-t1.1}
+\end{equation}
+where
+\begin{equation}
+    S^{zz}_{\alpha}(q,\omega_0) \; = \; \frac{1}{\ell_x}\sum_{x,x'} \, e^{-\im q (x-x')}\, \int dt \; e^{\im \omega_0 t } \, \left\langle \,  S_{\alpha}^{z}(x,t) S_{\alpha}^{z}(x',0)   \, \right\rangle \; . 
+\end{equation}
+
+%with $\omega_e$ the electron magnetic resonance frequency.
+The longitudinal structure factor can be written, using the quantum fluctuation-dissipation theorem, in terms of the imaginary part of the retarded spin response function 
+\begin{equation}
+    S^{zz}_{\alpha}(q,\omega_0) \; = \; \frac{2}{1-e^{-\omega_0\beta}} \, \text{Im} \chi^{\text{ret}}_{\alpha}(q,\omega_0) \; ,% \approx \;  -\frac{2}{\omega\beta} \, \text{Im} \, \chi^{\text{ret}}_{\alpha}(q,\omega) 
+\end{equation}
+and $\chi^{\text{ret}}_{\alpha}(q,\omega) $ is obtained from $\chi_{\alpha}(q,\im \omega_l) $ by analytic continuation $\im \omega_l \to \omega + \im 0^{+}$. The dynamical susceptibility at Matsubara frequency $\omega_l$ is
+\begin{equation}
+    \chi_{\alpha}(q, \im \omega_l ) \; = \;  \frac{1}{2\ell_x}\sum_{x,x'} \, e^{-\im q (x-x')}\, \int_{-\beta }^{\beta}  d\tau \; e^{\im \omega_l \tau  }   \left\langle \,  S_{\alpha}^{z}(x,\tau) S_{\alpha}^{z}(x',0) \,  \right\rangle_{\beta} \; . \label{eq:6-spin-dynamical-susc-momentum}
+\end{equation}
+
+%\frac{k_B T}{\hbar \omega_{\text{Larmor}} } = 654602 at 5 kelvins and 130920 at 1 K
+Should be noted that the magnetic scale is very small, for comparison the \acrshort{nmr} experiment uses radio frequencies of the order $\omega_{0} \sim 10 \text{ MHz}$ \cite{Baek2017}, then $\dfrac{\hbar \, \omega_0}{k_B T} \sim 10^{-4}$ at the minimum temperature scale of the experiment $T = 1\text{ K}$.   In the regime $\omega_0 \ll T$, the correlation is 
+\begin{equation}
+    S^{zz}_{\alpha}(q,\omega_0) \;  \approx \;  \frac{2 T}{\omega_0} \, \text{Im} \, \chi^{\text{ret}}_{\alpha}(q,\omega_0) \; .
+\end{equation}
+Moreover, regarding the low-energy regime, I will assume that the hyperfine coupling is constant, $A_{\text{hf}}(q) \approx A_{\text{hf}}(0)$. The desired spin-lattice relaxation rate is then:
+\begin{equation}
+    \frac{1}{T_1} \; = \; \Gamma^2 \, T \, \frac{\sin^2 \theta}{\omega} \; \vert A_{\text{hf}}\vert^2 \; \sum_{\alpha = R,L} \, \sum_{q} \,  \,  \text{Im} \, \chi^{\text{ret}}_{\alpha}(q,\omega) \; . \label{eq:6-t1}
+\end{equation}
+In the next section I will calculate the sum on momentum that appears in \eqref{eq:6-t1}.
+
+\section{Spin-spin correlation}
+
+In order to calculate the rate \eqref{eq:6-t1}, I need first calculate the dynamical susceptibility. Here I will work with the Majorana fermions in the grand canonical ensemble and the Hamiltonian is given by \eqref{eq:5-H-eff}. Should be noted that the chemical potential for the Majorana fermions is zero for this effective theory. Let me define the Majorana field at imaginary time $\tau$ as
+\begin{align}
+    \gamma_{\alpha}(q,\tau) \; &= \; e^{-H_{\text{eff}} \, \tau} \, \gamma_{q\alpha} \, e^{H_{\text{eff}} \, \tau}  \; = \; e^{- v_{\alpha}q\tau} \, \gamma_{q\alpha} \; , \\[6pt]
+    \gamma_{\alpha}^{\dagger}(q,\tau) \; &= \; e^{H_{\text{eff}} \, \tau} \, \gamma_{-q\alpha} \, e^{-H_{\text{eff}} \, \tau} \; = \; \gamma_{\alpha}(-q,-\tau) \; , 
+\end{align}
+for $-\beta \leq \tau \leq \beta$, and the Majorana Green's function is
+    \begin{equation}
+        \mathcal{G}_{\alpha}(q , \tau_1-\tau_2 )  \; = \;     \langle \, \text{T}_{\tau} \, \gamma_{\alpha}(q,\tau_1) \gamma_{\alpha}^{\dagger}(q,\tau_2) \, \rangle_{ \, \beta}  \, , % \; = \;     \langle \,  \gamma_{\alpha}(q,\tau_1) \gamma_{\alpha}(-q,-\tau_2) \, \rangle_{ \, \beta} \, ,
+    \end{equation}
+    Where the brackets $\langle \cdots  \rangle_{\beta}$ denotes the thermodynamic average weight by $e^{-\beta H_{\text{eff}}}$, which is a trace over the complete set of states, and $\text{T}_{\tau}$ is the $\tau$-ordering operator, which sort the operator with earliest (smallest) $\tau$ to the right.    The Green's function satisfies $\mathcal{G}_{\alpha}(-q , \tau ) = - \mathcal{G}_{\alpha}(q , \tau )$, % $  \mathcal{G}_{\alpha}(q , 0)  = 0$ 
+    and 
+    \begin{equation}
+          \langle \,  \gamma_{\alpha}(q,\tau) \gamma_{\alpha}^{\dagger}(k, 0 ) \, \rangle_{ \, \beta}  \; = \;   \mathcal{G}_{\alpha}(q , \tau )  \, \delta_{q,k}  \,  .
+    \end{equation}
+This Green function has a simpler form in Matsubara frequency domain
+    \begin{align}
+        \mathcal{G}_{\alpha}(q , \im \omega_n ) 
+        \; & = \; \frac{1}{2} \;  \int_{-\beta}^{\beta} \; d\tau \; e^{\im \omega_n \tau } \, \mathcal{G}_{\alpha}( q , \tau ) \; = \;   \frac{1}{\im \omega_n - v_{\alpha}q} \; . 
+    \end{align}
+    
+    
+The spin correlation as a function of the position, using the spin representation \eqref{eq:5-Spin}, is 
+\begin{equation}
+\begin{split}
+        \tilde{\chi}_{\alpha}(x-x',\tau) \; &= \;  \left\langle \, S_{\alpha}^{z}(x,\tau) S_{\alpha}^{z}(x',0) \,  \right\rangle_{\beta}  \\[5pt]
+        &= \; -  \frac{s^2}{4} \; \left\langle \, \gamma_{\alpha}(x,\tau) \partial_x \gamma_{\alpha}(x,\tau)  \gamma_{\alpha}(x',0) \partial_{x^{\prime} } \gamma_{\alpha}(x',0) \,  \right\rangle_{\beta}  \; . \label{eq:6-spin-dynamical-susc-position}
+\end{split}
+\end{equation}
+Where I am using the tilde in $\tilde{\chi}_{\alpha}(x-x',\tau)$ to differentiate it from $\chi_{\alpha}(q, \im \omega_l )$. Using \eqref{eq:5-gamma-def} and Wick's theorem, the spin susceptibility is 
+\begin{equation}
+    \begin{split}
+    \tilde{\chi}(x-x',\tau) \; & = \; \frac{s^2}{2\ell_x^2} \sum_{k_{1},k_{2} \geq 0}  \;   \Big\{  \;          k_{2}(k_{2}-k_{1})  \;  e^{\im(x-x^{\prime})(k_{2}+k_{1})}\, \mathcal{G}_{\alpha}(k_{1} , \tau ) \, \mathcal{G}_{\alpha}(k_{2} , \tau ) 
+        \\   & -  \; k_{2}(k_{1}+k_{2})  \;  e^{\im(x-x^{\prime})(-k_{2}+k_{1})} \,  \mathcal{G}_{\alpha}(k_{1} , \tau ) \, \mathcal{G}_{\alpha}(k_{2} , -\tau ) \;         \\
+        &  -  \;   k_{2}(k_{2}+k_{1}) \;  e^{\im(x-x^{\prime})(k_{2}-k_{1})} \, \mathcal{G}_{\alpha}(k_{1} , -\tau ) \, \mathcal{G}_{\alpha}(k_{2} , \tau ) \;  \\ & + \;    k_{2}(k_{2}-k_{1}) \;  e^{\im(x-x^{\prime})(-k_{2}-k_{1})}\, \mathcal{G}_{\alpha}(k_{1} , -\tau ) \, \mathcal{G}_{\alpha}(k_{2} , -\tau ) \;  \Big\}  \label{eq:6-susceptiblility-x} \; .
+    \end{split} 
+\end{equation}
+
+%The sum over momentum of spin susceptibility is  equal to take the value $x=x'$ in  \eqref{eq:6-susceptiblility-x}.
+After summing over momentum, I obtain the local spin susceptibility 
+\begin{align}
+    \sum_{q}  \chi_{\alpha}(q, \im \omega_l ) \; &= \; \sum_{q} \frac{1}{2 \ell_x} \sum_{x,x'} e^{- \im q (x-x^{ \prime} )}  \int_{-\beta}^{\beta} d\tau  \, e^{\im \omega_l \tau }  \, \tilde{\chi}_{\alpha}(x-x', \tau ) \; , \\[6pt]
+    & = \; \frac{\ell_x}{2} \int_{-\beta}^{\beta} d\tau  \, e^{\im \omega_l \tau } \,  \tilde{\chi}_{\alpha}(0, \tau )
+\end{align}
+%Two expression are needed to calculate the Fourier transform to Matsubara frequencies 
+To evaluate the $\tau$ integral, I need two expression:
+\begin{align}
+    \frac{1}{2} \int_{-\beta}^{\beta} d \tau  \; e^{\im \omega_l \tau } \, \mathcal{G}_{\alpha}(k_1 , \tau ) \mathcal{G}_{\alpha}( k_2 , \tau ) 
+     & =  \frac{1}{\beta}  \;  \sum_{n } \; \mathcal{G}_{\alpha}(k_1 , \im \omega_{n} )\; \mathcal{G}_{\alpha}(k_2 , \im \omega_{l} -\im \omega_{n} ) \; , \\[6pt]
+    \frac{1}{2} \int_{-\beta}^{\beta} d \tau  \; e^{\im \omega_l \tau } \, \mathcal{G}_{\alpha}(k_1, \tau ) \mathcal{G}_{\alpha}(k_2 , -\tau ) 
+     & = \frac{1}{\beta}  \;  \sum_{n } \; \mathcal{G}_{\alpha}(k_1 , \im \omega_{n} )\; \mathcal{G}_{\alpha}(k_2 , -\im \omega_{l} +\im \omega_{n}  ) \; .
+\end{align}
+where $\omega_l$ is a bosonic Matsubara frequency while $\omega_n$ is a fermionic Matsubara frequency. That is, $e^{\im \omega_l \beta} = 1 $ and $e^{\im \omega_{n} \beta} = - 1 $. The right hand side of these equations can be calculated with the standard Matsubara sum techniques \cite{altland2010condensed, mahan2000many}. Performing these sums, I obtain 
+\begin{equation}
+    \begin{split}
+     \sum_{q} \chi_{\alpha}(q, \im \omega_l ) \;  = \;  \frac{s^2}{4 \ell_x} \,  \sum_{k_{1},k_{2} \geq 0} & \;   \Bigg\{  \;   k_{2}(k_{2}-k_{1})  \;   \frac{ f(  v_{ \alpha } k_{1} ) - f( - v_{ \alpha } k_{2} )  }{\im \omega_{ \ell  }  -v_{ \alpha } k_{1} - v_{ \alpha } k_{2} } 
+        \\[5pt]   & +  \; (k_{1}+k_{2})k_{2}  \;   \frac{ f(  v_{ \alpha } k_{1} ) - f(  v_{ \alpha } k_{2} )  }{\im \omega_{ \ell  } - v_{ \alpha } k_{1}+  v_{ \alpha } k_{2}} \;        \\[5pt]
+        &  -  \;   k_{2}(k_{2}+k_{1}) \;   \, \frac{ f( v_{ \alpha } k_{1}) - f(  v_{ \alpha } k_{2} )}{\im \omega_{ \ell  }  + v_{ \alpha } k_{1}- v_{ \alpha } k_{2}} \;  \\[5pt] & - \;    k_{2}(k_{2}-k_{1}) \; \frac{ f( v_{ \alpha } k_{1} ) - f( -  v_{ \alpha } k_{2} )  }{\im \omega_{ \ell  } + v_{ \alpha } k_{1}+  v_{ \alpha } k_{2} }  \;  \Bigg\} \; , 
+    \end{split} 
+\end{equation}
+where 
+\begin{equation}
+    f(\omega) \; = \; \frac{1}{e^{\beta \omega} +1} \; 
+\end{equation}
+is the Fermi-Dirac distribution.
+
+
+Then, by taking the analytic continuation to real frequencies, $\im \omega_{l} \to  \omega + \im 0^{+}$, and the imaginary part and performing one sum over momentum, I obtain the expression:
+\begin{equation}
+    \begin{split}
+     \sum_{q} \;\mathrm{Im} \,  \chi_{\alpha}^{\text{ret}}(q, \omega) \;  &= \; \\[5pt]   - \frac{ \pi}{v^{2}} \, \frac{s^2}{4 \ell_x} \,  \sum_{ k \geq 0}  \;   \Big\{  \;       & k( - \omega  + 2 v_{\alpha} k)  \;   \left[ f( \omega - v_{ \alpha } k ) - f( - v_{ \alpha } k )  \right] \;
+        \\[5pt]    +  \; &k (  \omega +2v_{ \alpha } k )  \;   \left[ f(   \omega + v_{ \alpha } k ) - f(  v_{ \alpha } k )   \right] \;        \\[5pt]
+         -  \;  & k(-  \omega + 2 v_{ \alpha } k ) \;   \left[  f(  - \omega + v_{ \alpha } k ) - f(  v_{ \alpha } k )  \right] \;  \\[5pt]  - \;   & k( \omega+ 2 v_{ \alpha } k) \; \left[ f(  -\omega - v_{ \alpha } k ) - f( -  v_{ \alpha } k )   \right] \;  \Big\}  \; .
+    \end{split} 
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+    \begin{equation}
+        \begin{split}
+         \sum_{q} \;\mathrm{Im} \,  \chi_{\alpha}(q, \omega) \; & = \;  - \im \pi \, \frac{s^2}{4 \ell_x} \,  \sum_{k_{1},k_{2} \geq 0}  \;   \Big\{  \;    \\ & + \;       k_{2}(k_{2}-k_{1})  \;   \left( f(  v_{ \alpha } k_{1} ) - f( - v_{ \alpha } k_{2} ) \right) \; \delta \left( \omega  -v_{ \alpha } k_{1} - v_{ \alpha } k_{2} \right) 
+            \\   & +  \;k_{2} (k_{1}+k_{2})  \;   \left( f(  v_{ \alpha } k_{1} ) - f(  v_{ \alpha } k_{2} )  \right) \; \delta \left(  \omega - v_{ \alpha } k_{1}+  v_{ \alpha } k_{2} \right)  \;         \\
+            &  -  \;   k_{2}(k_{2}+k_{1}) \;   \, \left(  f( v_{ \alpha } k_{1}) - f(  v_{ \alpha } k_{2} ) \right) \; \delta \left(   \omega  + v_{ \alpha } k_{1}- v_{ \alpha } k_{2} \right) \;  \\ & - \;    k_{2}(k_{2}-k_{1}) \; \left( f( v_{ \alpha } k_{1} ) - f( -  v_{ \alpha } k_{2} )  \right) \; \delta \left(   \omega + v_{ \alpha } k_{1}+  v_{ \alpha } k_{2} \right)   \;  \Big\} 
+        \end{split} 
+    \end{equation}
+    and performing the sum in $k_1$
+    \begin{equation}
+        \begin{split}
+         \sum_{q} \;\mathrm{Im} \,  \chi_{\alpha}(q, \omega) \; & = \;  - \frac{\im \pi}{v^{2}} \, \frac{s^2}{4 \ell_x} \,  \sum_{ k_{2} \geq 0}  \;   \Big\{  \;    \\ & + \;       k_{2}( 2 v_{\alpha} k_{2}- \omega )  \;   \left( f( \omega - v_{ \alpha } k_{2} ) - f( - v_{ \alpha } k_{2} ) \right) \;
+            \\   & +  \; k_{2} (  \omega +2v_{ \alpha } k_{2} )  \;   \left( f(   \omega + v_{ \alpha } k_{2} ) - f(  v_{ \alpha } k_{2} )  \right) \;        \\
+            &  -  \;   k_{2}(-  \omega + 2 v_{ \alpha } k_{2} ) \;   \left(  f(  - \omega + v_{ \alpha } k_{2} ) - f(  v_{ \alpha } k_{2} ) \right) \;  \\ & - \;    k_{2}( \omega+ 2 v_{ \alpha } k_{2}) \; \left( f(  -\omega - v_{ \alpha } k_{2} ) - f( -  v_{ \alpha } k_{2} )  \right) \;  \Big\} 
+        \end{split} 
+    \end{equation}
+    \begin{equation}
+        \begin{split}
+         \sum_{q} \;\mathrm{Im} \,  \chi_{\alpha}(q, \omega) \; & = \;  - \frac{\im \pi}{v^{2}} \, \frac{s^2}{4 \ell_x} \,  \sum_{ k}  \;   \Big\{  \;    \\ & + \;       k( \omega  + 2 v_{\alpha} k)  \;   \left( f( \omega + v_{ \alpha } k ) - f(  v_{ \alpha } k ) \right) \;
+            \\   & -  \;   k( 2 v_{ \alpha } k  -  \omega ) \;   \left(  f(  - \omega + v_{ \alpha } k ) - f(  v_{ \alpha } k ) \right)    \Big\} 
+        \end{split} 
+    \end{equation}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The terms in the sum are related by momentum inversion. %The sum can be written as a integral over the positives and negatives momentum. 
+In the limit $\ell_x \to \infty$, the sum can be written as a integral of all momenta. %Furthermore, the sum can be exactly solved in the limit of $\ell_x \to \infty$, which makes the sum in the momentum turns to a integral
+The integral obtained is 
+\begin{equation}
+    - \frac{  s^2}{8 v^2}  \int_{-\infty}^{\infty} dk \,    \Bigg[  \, k( \omega +2 v_{\alpha} k )  \;   \Big[ f( \omega + v_{ \alpha } k ) - f(  v_{ \alpha } k ) \Big] - ( \omega \to - \omega ) \, \Bigg] \; ,
+\end{equation}
+and yields the following value for $\omega = \omega_0$
+\begin{equation}    
+       \sum_{q} \;\mathrm{Im} \,  \chi_{\alpha}^{\text{ret}}(q, \omega_0)  =  \frac{  s^2}{24 v^4}\, \Big(  - \omega^3_0 \, + \, 4 \pi^2 \omega_0 T^2 \;  \Big) \; .
+\end{equation}
+
+In the limit of $T \gg \omega_0$, the leading order for the spin-lattice relaxation rate \eqref{eq:6-t1} is 
+\begin{equation}
+    \dfrac{1}{T_1} \; = \; c \, T^3 \; , \label{eq:6-t1-final}
+\end{equation}
+with the proportionality parameter being 
+\begin{equation}
+    c \; = \; \Gamma^2 \, \frac{  \pi^2 s^2}{3 v^4}  \sin^2 \theta\; \vert A_{\text{hf}}(0)\vert^2 \; = \;   \Gamma^2 \,  \frac{  \pi^2 }{3 }  \frac{J^6}{ h^2_x h^2_y h^8_z} \sin^2 \theta\; \vert A_{\text{hf}}(0)\vert^2 \; .
+\end{equation}
+    
+%The cubic temperature dependence in the spin-lattice is typical for fermions with linear dispersion.
+%As expected, the Majorana fermions localized in the edge gives a cubic temperature dependence. This behavior is expected for gapless fermions with linear dispersion. 
+
+The parameter $c$ has a strong dependence in $h_z$ which should be interpret as a relevant contribution from the Zeeman interaction. For other types of defects the magnetic field dependence in $c$ should differ.
+
+
+Importantly, the cubic temperature dependence in the spin-lattice relaxation rate in agreement of the experimental measurement of Ref.\cite{Zheng-gapless2017}. Here, I obtain this dependence considering an \acrshort{kqsl} with one long linear defects along the $\bf{a}$ axis. This result opens the possibility to interpret the unconventional gapless behavior in \acrshort{rucl} as coming from the Majorana edge modes localized in defects.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{comment}
+    
+    
+I will assume that the hyperfine coupling $A_{\text{hf}}$ can be assumed to be a constant.  Therefore, the interesting quantity in the integral in $q$ of the susceptibility. The value is 
+\begin{equation}
+    \begin{split}
+    \int_q \chi_{\alpha}(q, \im \omega_l ) \; & = \;  \frac{1 }{\ell_x} \, \int_q  \, \sum_{k_{1},k_{2} \geq 0}  \;   \Big\{  \;    \\ & + \;       k_{2}(k_{2}-k_{1})  \;  \delta \left(k_{2}+k_{1}-q \right)\, \frac{ f(  v_{ \alpha } k_{1} ) - f( - v_{ \alpha } k_{2} )  }{\im \omega_{ \ell  }  -v_{ \alpha } k_{1} - v_{ \alpha } k_{2} } 
+        \\   & +  \; (k_{1}+k_{2})k_{2}  \;  \delta \left(-k_{2}+k_{1} -q \right) \, \frac{ f(  v_{ \alpha } k_{1} ) - f(  v_{ \alpha } k_{2} )  }{\im \omega_{ \ell  } - v_{ \alpha } k_{1}+  v_{ \alpha } k_{2}} \;         \\
+        &  -  \;   k_{2}(k_{2}+k_{1}) \;  \delta \left(k_{2}-k_{1} -q \right) \, \frac{ f( v_{ \alpha } k_{1}) - f(  v_{ \alpha } k_{2} )}{\im \omega_{ \ell  }  + v_{ \alpha } k_{1}- v_{ \alpha } k_{2}} \;  \\ & - \;    k_{2}(k_{2}-k_{1}) \;  \delta \left(-k_{2}-k_{1} -q \right) \, \frac{ f( v_{ \alpha } k_{1} ) - f( -  v_{ \alpha } k_{2} )  }{\im \omega_{ \ell  } + v_{ \alpha } k_{1}+  v_{ \alpha } k_{2} }  \;  \Big\} 
+    \end{split} 
+\end{equation}
+    
+    \begin{equation}
+    \begin{split}
+    \chi_{\alpha}(q, \im \omega_l ) \; & = \;  \frac{1 }{\ell_x}  \, \sum_{k_{1},k_{2} \geq 0}  \;   \Big\{  \;    \\ & + \;       k_{2}(k_{2}-k_{1})  \;  \delta \left(k_{2}+k_{1}-q \right)\, \frac{ f(  v_{ \alpha } k_{1} ) - f( - v_{ \alpha } k_{2} )  }{\im \omega_{ \ell  }  -v_{ \alpha } k_{1} - v_{ \alpha } k_{2} } 
+        \\   & +  \; (k_{1}+k_{2})k_{2}  \;  \delta \left(-k_{2}+k_{1} -q \right) \, \frac{ f(  v_{ \alpha } k_{1} ) - f(  v_{ \alpha } k_{2} )  }{\im \omega_{ \ell  } - v_{ \alpha } k_{1}+  v_{ \alpha } k_{2}} \;         \\
+        &  -  \;   k_{2}(k_{2}+k_{1}) \;  \delta \left(k_{2}-k_{1} -q \right) \, \frac{ f( v_{ \alpha } k_{1}) - f(  v_{ \alpha } k_{2} )}{\im \omega_{ \ell  }  + v_{ \alpha } k_{1}- v_{ \alpha } k_{2}} \;  \\ & - \;    k_{2}(k_{2}-k_{1}) \;  \delta \left(-k_{2}-k_{1} -q \right) \, \frac{ f( v_{ \alpha } k_{1} ) - f( -  v_{ \alpha } k_{2} )  }{\im \omega_{ \ell  } + v_{ \alpha } k_{1}+  v_{ \alpha } k_{2} }  \;  \Big\} 
+    \end{split} 
+\end{equation}
+    
+    \begin{equation}
+    \begin{split}
+    \chi_{\alpha}(q, \im \omega_l ) \; & = \;  \frac{1 }{\ell_x^3}\sum_{x,x'} \, \int_{-\beta }^{\beta}  d\tau \; e^{\im \omega_l \tau  } \sum_{k_{1},k_{2} \geq 0}  \;   \Big\{  \;    \\ & + \;       k_{2}(k_{2}-k_{1})  \;  e^{\im(x-x^{\prime})(k_{2}+k_{1}-q)}\, \mathcal{G}_{\alpha}(k_{1} , \tau ) \, \mathcal{G}_{\alpha}(k_{2} , \tau ) 
+        \\   & -  \; (k_{1}+k_{2})k_{2}  \;  e^{\im(x-x^{\prime})(-k_{2}+k_{1} -q )} \,  \mathcal{G}_{\alpha}(k_{1} , \tau ) \, \mathcal{G}_{\alpha}(k_{2} , -\tau ) \;         \\
+        &  -  \;   k_{2}(k_{2}+k_{1}) \;  e^{\im(x-x^{\prime})(k_{2}-k_{1} -q )} \, \mathcal{G}_{\alpha}(k_{1} , -\tau ) \, \mathcal{G}_{\alpha}(k_{2} , \tau ) \;  \\ & + \;    k_{2}(k_{2}-k_{1}) \;  e^{\im(x-x^{\prime})(-k_{2}-k_{1} -q )}\, \mathcal{G}_{\alpha}(k_{1} , -\tau ) \, \mathcal{G}_{\alpha}(k_{2} , -\tau ) \;  \Big\} 
+    \end{split} 
+\end{equation}
+    \begin{equation}
+    \begin{split}
+    \chi_{\alpha}(q, \im \omega_l ) \; & = \;  \frac{1 }{\ell_x^3}\sum_{x,x'} \,  \sum_{k_{1},k_{2} \geq 0}  \;   \Big\{  \;    \\ & + \;       k_{2}(k_{2}-k_{1})  \;  e^{\im(x-x^{\prime})(k_{2}+k_{1}-q)}\, \frac{ f( vk ) - f( -vq )  }{\im \omega_{ \ell  }  -v k -vq } 
+        \\   & +  \; (k_{1}+k_{2})k_{2}  \;  e^{\im(x-x^{\prime})(-k_{2}+k_{1} -q )} \, \frac{ f( vk ) - f( vq )  }{\im \omega_{ \ell  } -vk+ vq} \;         \\
+        &  -  \;   k_{2}(k_{2}+k_{1}) \;  e^{\im(x-x^{\prime})(k_{2}-k_{1} -q )} \, \frac{ f(vk) - f( vq )}{\im \omega_{ \ell  }  +vk-vq} \;  \\ & - \;    k_{2}(k_{2}-k_{1}) \;  e^{\im(x-x^{\prime})(-k_{2}-k_{1} -q )}\, \frac{ f(vk ) - f( - vq )  }{\im \omega_{ \ell  } +vk+v q}  \;  \Big\} 
+    \end{split} 
+\end{equation}
+
+
+    and using \eqref{eq:5-spin-momentum} the correlation can be written as:
+    \begin{equation}
+          \chi_{\alpha}(q,\tau) \; =  \sum_{k_1,k_2 } \, s_{\alpha}^2 k_1 k_2 \, \left\langle \, \text{T} \, \gamma^{\dagger} (k_1+q , \tau )\gamma(k_1 , \tau )\gamma^{\dagger} (k_2+q , 0 )\gamma(k_2 , 0 ) \,  \right\rangle_{\beta} \, .
+    \end{equation}
+    Expanding the expression for momentum restricted to positive momentum
+    \begin{align}
+    \begin{split}
+                  \chi_{\alpha}(q,\tau) \; %&=   \sum_{k_1,k_2 > 0 } \, s_{\alpha}^2 k_1 k_2 \, \Big[ \,
+         %     \\
+           %   & \quad + \; \left\langle \, \text{T} \, \gamma^{\dagger} (k_1+q , \tau )\gamma(k_1 , \tau )\gamma^{\dagger} (k_2+q , 0 )\gamma(k_2 , 0 ) \,  \right\rangle_{\beta} \, 
+          %              \\
+       %       & \quad - \; \left\langle \, \text{T} \, \gamma^{\dagger} (-k_1+q , \tau )\gamma(-k_1 , \tau )\gamma^{\dagger} (k_2+q , 0 )\gamma(k_2 , 0 ) \,  \right\rangle_{\beta} \, 
+      %                  \\
+       %       & \quad - \; \left\langle \, \text{T} \, \gamma^{\dagger} (k_1+q , \tau )\gamma(k_1 , \tau )\gamma^{\dagger} (-k_2+q , 0 )\gamma(-k_2 , 0 ) \,  \right\rangle_{\beta} \, 
+       %                 \\
+       %       & \quad + \; \left\langle \, \text{T} \, \gamma^{\dagger} (-k_1+q , \tau )\gamma(-k_1 , \tau )\gamma^{\dagger} (-k_2+q , 0 )\gamma(-k_2 , 0 ) \,  \right\rangle_{\beta} \,  \; \Big]  \\[8pt]
+               &=  \sum_{k_1,k_2 > 0} \, s_{\alpha}^2 k_1 k_2 \, \Big[ \,
+              \\[5pt]
+              & \quad + \; \left\langle \, \text{T} \, \gamma^{\dagger} (k_1+q , \tau )\gamma(k_1 , \tau )\gamma^{\dagger} (k_2+q , 0 )\gamma(k_2 , 0 ) \,  \right\rangle_{\beta} \, 
+                        \\[5pt]
+              & \quad + \; \left\langle \, \text{T} \, \gamma^{\dagger} (k_1 , -\tau )\gamma(k_1-q , -\tau )\gamma^{\dagger} (k_2+q , 0 )\gamma(k_2 , 0 ) \,  \right\rangle_{\beta} \, 
+                        \\[5pt]
+              & \quad + \; \left\langle \, \text{T} \, \gamma^{\dagger} (k_1+q , \tau )\gamma(k_1 , \tau )\gamma^{\dagger} (k_2 , 0 )\gamma(k_2-q , 0 ) \,  \right\rangle_{\beta} \, 
+                        \\[5pt]
+              & \quad + \; \left\langle \, \text{T} \, \gamma^{\dagger} (k_1 , -\tau )\gamma(k_1-q , -\tau )\gamma^{\dagger} (k_2 , 0 )\gamma(k_2-q , 0 ) \,  \right\rangle_{\beta} \,  \; \Big] 
+    \end{split} 
+    \end{align}
+    %\begin{equation}    \chi_{\alpha}(x-x',\tau) \; = \; \left\langle \, \text{T} \, S_{\alpha}^{z}(x,\tau) S_{\alpha}^{z}(x',0) \,  \right\rangle_{\beta}\end{equation}
+    %Using \eqref{eq:5-Spin} 
+    %\begin{equation}
+    %    \chi_{\alpha}(x-x',\tau) \; = \;  \frac{4}{\ell_x^2} \sum_{q,q'  \in \frac{1}{2}\text{BZ} } \;  s^2 q q' \;      \left\langle \, \text{T} \, \gamma_{\alpha}^{\dagger}(q,\tau) \gamma_{\alpha} (q,\tau) \gamma_{\alpha}^{\dagger}(q',0) \gamma_{\alpha} (q',0)  \right\rangle_{\beta}
+    %\end{equation}
+    This four fermion average can be computed by using Wick theorem. Let the Majorana Green function be
+    \begin{equation}
+        \mathcal{G}_{\alpha}(q , \tau_1-\tau_2 )  \; = \;     \langle \, \mathrm{T} \; \gamma_{\alpha}(q,\tau_1) \gamma_{\alpha}^{\dagger}(q,\tau_2) \, \rangle_{ \, \beta}  \; = \;     \langle \, \mathrm{T} \; \gamma_{\alpha}(q,\tau_1) \gamma_{\alpha}(-q,-\tau_2) \, \rangle_{ \, \beta} \, ,
+    \end{equation}
+    which satisfies $\mathcal{G}_{\alpha}(-q , \tau ) = - \mathcal{G}_{\alpha}(q , \tau )$, $  \mathcal{G}_{\alpha}(q , 0)  = 0$ and 
+    \begin{equation}
+          \langle \, \mathrm{T} \; \gamma_{\alpha}(q,\tau) \gamma_{\alpha}^{\dagger}(k, 0 ) \, \rangle_{ \, \beta}  \; = \;   \mathcal{G}_{\alpha}(q , \tau )  \, \delta_{q,k}  \,  .
+    \end{equation}%by momentum conservation. 
+    The correlation can then be expressed as 
+    \begin{align}
+              \chi_{\alpha}(q,\tau) \;
+               &=  \sum_{k_1,k_2 \in \text{BZ}} \, s_{\alpha}^2 k_1 k_2 \, \Big[ \,
+             \\
+             & \quad - \; \mathcal{G}_{\alpha}(k_1 , \tau )  \, \delta_{k_1,k_2+q} \mathcal{G}_{\alpha}(k_2 , -\tau )  \, \delta_{k_2,k_1+q} \, 
+              \\
+              & \quad - \; \mathcal{G}_{\alpha}(k_1-q ,- \tau )  \, \delta_{k_1-q,k_2+q} \mathcal{G}_{\alpha}(k_2 , \tau )  \, \delta_{k_2,k_1} \, 
+                   \\
+              & \quad - \; \mathcal{G}_{\alpha}(k_1 , \tau )  \, \delta_{k_1,k_2} \mathcal{G}_{\alpha}(k_2 , -\tau )  \, \delta_{k_2,k_1+q} \, 
+              \\
+              & \quad - \; \mathcal{G}_{\alpha}(k_1-q , -\tau )  \, \delta_{k_1-q,k_2} \mathcal{G}_{\alpha}(k_2-q , \tau )  \, \delta_{k_2-q,k_1} \, 
+                         \; \Big]  
+    \end{align}
+    
+    
+    
+    
+    
+    The Majorana Green function in the Matsubara frequency domain is simply
+    \begin{align}
+        \mathcal{G}_{\alpha}(q , \im \omega_0 ) 
+        \; & = \; \frac{1}{2} \;  \int_{-\beta}^{\beta} \; d\tau \; e^{\im \omega_0 \tau } \, \mathcal{G}_{\alpha}(k , \tau ) \; = \;   \frac{1}{\im \omega_0 - v_{\alpha}q} \; . 
+    \end{align}
+    %Then
+    %\begin{equation}    \chi_{\alpha}(x-x',\tau) \; = \;  -\frac{4}{\ell_x^2} \sum_{q  \in \frac{1}{2}\text{BZ} } \;  s^2 q^2 \;  \mathcal{G}_{\alpha}(q , \tau )\mathcal{G}_{\alpha}(q , -\tau ) \; .\end{equation}
+    
+    
+    The correlation in frequency domain is non-zero for bosonic frequencies $\omega_{\ell} = \frac{2 \pi \ell}{\beta}$.
+    \begin{equation}
+        \chi_{\alpha}(q,\im\omega_{\ell}) \; = \; \frac{1}{2} \;  \int_{-\beta}^{\beta} \; d\tau \; e^{\im \omega_{\ell} \tau } \chi_{\alpha}(q,\tau )
+    \end{equation}
+    %and since
+    %\begin{align}    \frac{1}{2} \int_{-\beta}^{\beta} d \tau  \; e^{\im \omega_{\ell} \tau } \, \mathcal{G}(k , \tau ) \mathcal{G}(q , -\tau )     \; & = \;  \frac{1}{\beta}  \;  \sum_{n} \; \mathcal{G}(k , \im \omega_{n} )\; \mathcal{G}(q , \im \omega_{n} -\im \omega_\ell )  \; ,     &= \; \end{align}
+    %then
+    %\begin{equation}    \chi_{\alpha}(x-x',\im\omega_{\ell}) \; = \; -\frac{4}{\ell_x^2} \sum_{q  \in \frac{1}{2}\text{BZ} } \;  s^2 q^2 \;  \frac{1}{\beta}  \sum_{n} \; \mathcal{G}(k , \im \omega_{n} )\; \mathcal{G}(q , \im \omega_{n} -\im \omega_\ell ) \end{equation}
+    
+    (...)
+\end{comment}    
+
+
+
+
+

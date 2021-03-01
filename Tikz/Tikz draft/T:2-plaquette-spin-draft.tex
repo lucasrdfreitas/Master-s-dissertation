@@ -1,0 +1,55 @@
+\documentclass{standalone}  %
+\usepackage[margin=2cm]{geometry}
+\usepackage{tikz,verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\def \h { 0.57735026918}  % 1/sqrt(3) comprimento  y  de uma celula                                     even (White, 2y) to odd (black ,2y+1) 
+\def \d { 0.28867513459}  % 1/ 2 sqrt(3)  distancia  y  entre celulas                                   odd (black , 2y-1) to even (white , 2y)
+\def \c { 0.5}           % 1/2 distancia  x  entre celulas  
+
+\def \v { 0.86602540378 }  % sqrt(3)/ 2   distancia  y  de duas celulas                                   odd-odd or even-even 
+
+% We will also add a margin for the arrows
+\def \mar {0.5}
+
+\begin{tikzpicture}[>=latex]
+
+
+% And now lets draw the circles
+
+% For bigger latices I would first use a For in the \x direction in a unit cell, and then in the \y. Unfortunately the in two case I would find a circle that do not belong to a hexagon .... It easier to just write explicitly
+
+
+
+	\node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B21) at (  \c, \v ) {};
+    \node (B11) at ( -1+\c, \v  ) {};
+    \node (B31) at ( 1+\c, \v  ) {};    
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W21) at (  0 , -\d +\v ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W31) at ( 1 , -\d +\v  ) {};
+    \draw[draw=black!500, line width=0.4mm] (B11)--(W21)--(B21)--(W31)--(B31);
+
+	\node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B22) at (  0 ,0 ) {};
+    \node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B32) at ( 1,0 ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W22) at (    \c, -\d ) {};
+    \node (W12) at ( -1 +\c, -\d ) {};
+    \node (W32) at ( 1 +\c, -\d ) {};
+   \draw[draw=black!500, line width=0.4mm] (W12)--(B22)--(W22)--(B32)--(W32);
+   \draw[draw=black!500, line width=0.4mm] (B22)--(W21);
+    \draw[draw=black!500, line width=0.4mm] (B32)--(W31);
+
+ \draw[draw=black!500, line width=0.4mm] (W22) -- +(0,-.4);
+ \draw[draw=black!500, line width=0.4mm] (B21) -- +(0,.4);
+ \node (p) at (.5,.26) { \scriptsize $p$ };
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,67 @@
+\documentclass{standalone}  
+\usepackage{tikz,tikz-3dplot}
+%\usepackage[active,tightpage]{preview}
+%\PreviewEnvironment{tikzpicture}
+%\setlength\PreviewBorder{1pt}
+\usetikzlibrary{arrows}
+
+%\usepackage{amsmath, amssymb}
+
+\tikzstyle{axis} = [draw=black, line width=0.6mm , ->]
+\tikzstyle{line} = [draw=black, line width=0.8mm]
+\begin{document}
+\def\r{4}
+\def\R{2}
+
+\tdplotsetmaincoords{72}{105}
+\begin{tikzpicture}[tdplot_main_coords]    
+        \draw[axis]  (0,0,0) -- ++(\R,0,0) node[below] {$\hat{\bf{x}}$};
+        \draw[axis]  (0,0,0) -- ++(0,\R,0) node[right] {$\hat{\bf{y}}$};
+        \draw[axis]  (0,0,0) -- ++(0,0,\R) node[above] {$\hat{\bf{z}}$};
+        
+        \draw[draw=blue!80!black, line width=0.60mm] (0,0,0)--(\r,-\r,0);
+        
+%\draw[->, draw=black, line width=0.40mm] (0,0)-- (0,1.5*\r);
+%\node[right] at  (0,1.5*\r)  {$\hat{z}$};
+%\draw[->, draw=black, line width=0.40mm] (0,0)-- (\r*0.866*1.5 ,-\r*0.5*1.5);
+%\node[below] at  (\r*0.866*1.5 ,-\r*0.5*1.5)  {$\hat{y}$};
+%\draw[->, draw=black, line width=0.40mm] (0,0)-- (-\r*0.866*1.5 ,-\r*0.5*1.5);
+%\node[below] at  (-\r*0.866*1.5 ,-\r*0.5*1.5)  {$\hat{x}$};
+ 
+    	\node[circle, fill=white, draw=black, line width=0.40mm, inner sep=4pt, opacity = .8, minimum size=4pt] (Ru) at (0, 0, 0) {}; 
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl1) at (0,0,\r) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl2) at (0,0 ,-\r) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl3) at (\r ,0,0) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl4) at (0 ,\r,0) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl5) at (-\r ,0,0) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl6) at (0 ,-\r,0) {};       
+    	
+    	
+    	\draw[line] (Cl3)--(Cl4)--(Cl5)--(Cl6)--(Cl3);
+    	\draw[line] (Cl1)--(Cl3) (Cl1)--(Cl4) (Cl1)--(Cl5) (Cl1)--(Cl6) (Cl1)--(Cl3);
+    	\draw[line] (Cl2)--(Cl3) (Cl2)--(Cl4) (Cl2)--(Cl5) (Cl2)--(Cl6) (Cl2)--(Cl3);
+    	
+    	
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=4pt, opacity = .8, minimum size=4pt] (Ru2) at (\r,-\r,0) {}; 
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl12) at (\r,-\r,\r) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl22) at (\r,-\r, -\r) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl32) at (\r+\r,-\r,0) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl42) at (\r,-\r+\r,0) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl52) at (\r-\r,-\r,0) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2.8pt, minimum size=2pt] (Cl62) at (\r,-\r-\r,0) {};       
+    	
+    	
+    	\draw[line] (Cl32)--(Cl42)--(Cl52)--(Cl62)--(Cl32);
+    	\draw[line] (Cl12)--(Cl32) (Cl12)--(Cl42) (Cl12)--(Cl52) (Cl12)--(Cl62) (Cl12)--(Cl32);
+  	\draw[line] (Cl22)--(Cl32) (Cl22)--(Cl42) (Cl22)--(Cl52) (Cl22)--(Cl62) (Cl22)--(Cl32);
+    	
+    	
+    	\coordinate (O) at (2.3,2.3,-\r+.5);
+        \draw[axis] (O) -- ++(-0.707,0.707,0) node[right] {$\bf{b}$};
+        \draw[axis] (O) -- ++(0.5773,0.5773,0.5773) node[above right] {$\bf{c}$};
+        \draw[axis] (O) -- ++(0.4082,0.4082,-2*0.4082) node[right] {$\bf{a}$};
+        
+
+        
+  \end{tikzpicture} 
+\end{document}

@@ -1,0 +1,47 @@
+\documentclass{standalone}  
+\usepackage{tikz,comment}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+
+
+
+
+
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\def \mar {.5}
+\def \s {8}
+
+\begin{tikzpicture}[>=latex]
+
+\clip ( 0.5*\s -1.66*\s+\mar*\s,  -0.438675*\s +\mar*\s- 0.7215*\s ) rectangle ( 0.5*\s-1.75*\s + 2.4*\s-\mar*\s, 1.7260*\s-\mar*\s- 0.7215*\s );
+
+
+    \node[circle, fill=black , inner sep=5pt] (ck) at (0.5*\s -0.75*\s  , 0.577*\s- 0.7215*\s ) {};
+	\node[circle, fill=black,  inner sep=5pt] (cj) at ( 0.5*\s-0.25*\s, 0.866*\s- 0.7215*\s ) {};
+	
+    \node[circle, fill=red!80!black, inner sep=5pt] (bxk) at (0.5*\s -1.75*\s + 1.15*\s, 0.66*\s- 0.7215*\s )  {};
+    \node[circle, fill=green!80!black, inner sep=5pt] (byk) at ( 0.5*\s-1.75*\s + 0.85*\s,0.66*\s- 0.7215*\s )  {};    
+    \node[circle, fill=blue!80!black, inner sep=5pt] (bzk) at ( 0.5*\s-0.75*\s, 0.43*\s- 0.7215*\s )  {};     
+    \node[circle, fill=red!80!black, inner sep=5pt] (bxj) at ( 0.5*\s-0.4*\s, 0.779*\s - 0.7215*\s )  {};
+    \node[circle, fill=green!80!black, inner sep=5pt] (byj)  at ( 0.5*\s-0.1*\s ,0.779*\s- 0.7215*\s )  {}; 
+    \node[circle, fill=blue!80!black, inner sep=5pt] (bzj) at ( 0.5*\s-0.25*\s , 1.02*\s- 0.7215*\s )  {};
+
+
+   % \node  at ( -1.75 + 1 , 0.577+.5- 0.7215 ) {\tiny $c_k$};        \node  at ( -1.75 + 1.15, 0.66 +.2)  {\tiny$b_k^x$};    \node  at ( -1.75 + 0.85,0.66+.2- 0.7215 )  {\tiny $b_k^y $};        \node  at ( -1.75 + 1, 0.43-.2)  {\tiny $b_k^z$};   
+
+% correct the origin
+
+%\draw (0,0) arc (0:360:1.75cm and 1cm);
+%\node[circle, fill=black, inner sep=5pt] at (0,0) {}
+\end{tikzpicture}
+\end{document}
+

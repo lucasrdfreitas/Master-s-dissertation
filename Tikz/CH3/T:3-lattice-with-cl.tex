@@ -1,0 +1,82 @@
+\documentclass{standalone}  
+\usepackage{tikz}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+\usetikzlibrary{arrows} 
+
+\usepackage{amsmath, amssymb}
+\usetikzlibrary{calc,fit,patterns,decorations.markings,matrix,3d}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1]
+\def\Anglei{66}
+\def\l {4}
+
+%\draw[ draw=black, line width=0.40mm, ->]  (-2,0) -- (5,0);
+%\draw[ draw=black, line width=0.40mm , ->]  (0,-2) -- (0,3);
+
+
+
+
+
+%\draw[->, draw=black, line width=0.40mm] (0,0)-- (0,1.5*\r);
+%\node[right] at  (0,1.5*\r)  {$\hat{z}$};
+%\draw[->, draw=black, line width=0.40mm] (0,0)-- (\r*0.866*1.5 ,-\r*0.5*1.5);
+%\node[below] at  (\r*0.866*1.5 ,-\r*0.5*1.5)  {$\hat{y}$};
+%\draw[->, draw=black, line width=0.40mm] (0,0)-- (-\r*0.866*1.5 ,-\r*0.5*1.5);
+%\node[below] at  (-\r*0.866*1.5 ,-\r*0.5*1.5)  {$\hat{x}$};
+ 
+ \begin{scope}[canvas is zx plane at y=0]
+ \draw[ draw=black, line width=0.40mm, ->]  (-2,0) -- (5,0);
+\draw[ draw=black, line width=0.40mm , ->]  (0,-2) -- (0,3);
+    	\node[circle, fill=white, draw=black, line width=0.40mm, inner sep=4pt, minimum size=4pt] (Ru) at (0, 0) {}; 
+\end{scope}
+
+ 
+ \begin{scope}[canvas is zx plane at y=0.5124]
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (Cl2) at (\l/1.732,0) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (Cl3) at (-0.866*\l/1.732 ,0.5*\l/1.732) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (Cl4) at (-0.866*\l/1.732 ,-0.5*\l/1.732) {};
+\end{scope}
+    	
+    	
+ \begin{scope}[canvas is zx plane at y=-0.35355339]
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (Cl5) at (-\l/1.732,0) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (Cl6) at (0.866*\l/1.732 ,0.5*\l/1.732) {};   
+    	\node[circle, fill=orange, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (Cl1) at (0.866*\l/1.732 ,-0.5*\l/1.732) {};
+\end{scope}
+    	
+    	
+  %  	\draw[ draw=black!80!white, densely dashed, opacity=0.4 , line width=0.40mm] (Cl1)--(Cl3)--(Cl5)--(Cl1);
+ %   	\draw[ draw=black, line width=0.40mm] (Cl2)--(Cl4)--(Cl6)--(Cl2);
+  %  	\draw[ draw=black, line width=0.40mm] (Cl2)--(Cl3)--(Cl4)--(Cl5)--(Cl6)--(Cl1)--(Cl2);
+
+
+
+
+
+\end{tikzpicture}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

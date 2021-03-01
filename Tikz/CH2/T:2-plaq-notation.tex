@@ -1,0 +1,101 @@
+\documentclass{standalone}  
+\usepackage{tikz,comment}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+
+
+
+
+
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\def \h { 0.57735026918}  % 1/sqrt(3) comprimento  y  de uma celula                                     even (White, 2y) to odd (black ,2y+1) 
+\def \d { 0.28867513459}  % 1/ 2 sqrt(3)  distancia  y  entre celulas                                   odd (black , 2y-1) to even (white , 2y)
+\def \c { 0.5}           % 1/2 distancia  x  entre celulas  
+\def \v { 0.86602540378 }  % sqrt(3)/ 2   distancia  y  de duas celulas                                   odd-odd or even-even 
+
+
+\def \mar {0.44}  % margin for the clip
+
+\def \l {7}         %horizontal length
+
+\begin{tikzpicture}[>=latex]
+
+
+
+
+
+
+\clip (-\mar+1,  \v -\d-\v -\mar ) rectangle (1+\mar+1+.05,\v+\mar);
+
+
+\foreach \a in {0,1}{
+        \draw[draw=blue!80!black, line width=0.40mm] ( \c +\a, \v  )-- ( \c+\a, \v + \c);
+        \draw[draw=blue!80!black, line width=0.40mm] ( \c+\a, -\d )-- ( \c+\a, -\d -\v+\d);
+        \draw[draw=blue!80!black, line width=0.40mm] ( \c +\a, \v -\c-2*\d-2*\v )-- ( \c+\a, \v -\c -\c-2*\d-2*\v);
+}
+
+\node at ( \c+4-.05, -\d - .25) [right] { \scriptsize \textcolor{blue!75!black}{$J_z$}   };
+\node at ( \c+4.2, -\v-.12) [below] { \scriptsize \textcolor{green!75!black}{$J_y$}   };
+\node at ( \c+4-.065
+, -\d - .55) [left] { \scriptsize \textcolor{red!75!black}{$J_x$}   };
+
+\foreach \b in {-1,0}{    
+    \foreach \a in {1,3} {
+        \draw[draw=green!80!black, line width=0.40mm] ( \a , -\d +\v+ 2*\v*\b    ) -- ( \a + \c-1, \v + 2*\v*\b   );
+        \draw[draw=red!80!black, line width=0.40mm] (\a , -\d +\v+ 2*\v*\b - \v+\d )-- ( \a -\c, -\d +\v+ 2*\v*\b - \v);
+            }   
+}
+
+
+\foreach \b in {-1,0}{    
+    \foreach \a in {1,3} {        
+        \node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W1\b\a) at ( \a , -\d +\v+ 2*\v*\b    ) {};
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B2\b\a) at ( \a + \c, \v + 2*\v*\b   ) {};
+        \node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W3\b\a) at ( \a +1, -\d +\v+ 2*\v*\b    ) {};
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B4\b\a) at ( \a +1, -\d +\v+ 2*\v*\b - \v+\d)  {};
+    	\node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W5\b\a) at ( \a -\c + 1, -\d +\v+ 2*\v*\b - \v) {};  	
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B6\b\a) at  ( \a , -\d +\v+ 2*\v*\b - \v+\d ) {};
+
+    	\node (B2r\b\a) at ( \a + \c+1, -\d +\v+ 2*\v*\b+\d   ) {}; 
+    	\node (W5r\b\a) at ( \a -\c + 2, -\d +\v+ 2*\v*\b - \v) {};    	
+    	
+    }   
+}
+
+\foreach \b in {-1,0}{    
+    \foreach \a in {1,3} { 
+        \draw[draw=red!80!black, line width=0.40mm] (B2\b\a)-- (W1\b\a);
+        \draw[draw=green!80!black, line width=0.40mm] (B2\b\a)--(W3\b\a);
+        \draw[draw=blue!80!black, line width=0.40mm] (W1\b\a)--(B6\b\a);
+ %       \draw[draw=green!80!black, line width=0.40mm] (W1\b\a)-- ( \a -\c, -\d +\v+ 2*\v*\b   +\d );
+        \draw[draw=red!80!black, line width=0.40mm] (B2r\b\a)-- (W3\b\a);        
+        \draw[draw=blue!80!black, line width=0.40mm] (W3\b\a)--(B4\b\a);       
+        \draw[draw=green!80!black, line width=0.40mm] (W5\b\a)--(B6\b\a);        
+        \draw[draw=red!80!black, line width=0.40mm] (B4\b\a)-- (W5\b\a);
+        \draw[draw=green!80!black, line width=0.40mm] (W5r\b\a)--(B4\b\a); 
+%        \draw[draw=red!80!black, line width=0.40mm] (B6\b\a)-- ( \a -\c, 2*\v*\b   - \d);
+            }   
+}
+
+\node (p) at (1.5,\v*.5-\d*.5) { \small $p$ };
+\foreach \b in {0}{    
+    \foreach \a in {1} { 
+\node[below=3pt] (p1) at ( \a , -\d +\v+ 2*\v*\b - \v+\d ) {  \small \textcolor{black}{$p_1$} };
+\node[below left =.01pt] (p2) at ( \a+.1 , -\d +\v+ 2*\v*\b    ) {  \small \textcolor{gray}{$p_2$} };
+\node[left =2pt] (p3) at ( \a + \c, \v + 2*\v*\b +.1  ) {  \small \textcolor{black}{$p_3$} };
+\node[above=3pt] (p4) at ( \a +1, -\d +\v+ 2*\v*\b    ) {  \small \textcolor{gray}{$p_4$} };
+\node[above right =.01pt] (p5) at ( \a +1-.04, -\d +\v+ 2*\v*\b - \v+\d) {  \small \textcolor{black}{$p_5$} };
+\node[below right = 0.1pt] (p6) at ( \a -\c + 1, -\d +\v+ 2*\v*\b - \v + .1) {  \small \textcolor{gray}{$p_6$} };
+} }
+
+\end{tikzpicture}
+\end{document}

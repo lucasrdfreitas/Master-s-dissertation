@@ -1,0 +1,48 @@
+\documentclass{standalone}  
+
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{tikz,verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{decorations.markings}
+\tikzstyle arrowstyle=[scale=1]
+
+\tikzstyle directed=[postaction={decorate,decoration={markings,
+    mark=at position 0.56 with {\arrow[arrowstyle]{stealth}}}}]
+\tikzstyle reverse directed=[postaction={decorate,decoration={markings,
+    mark=at position 0.44 with {\arrowreversed[arrowstyle]{stealth};}}}]
+    
+\def \side {2}
+\def \e {0.05}
+
+\begin{tikzpicture}[>=stealth]
+
+    \draw[fill=blue!24!black!30!white] (-\side,0+\e) rectangle  (\side,\side+\e);
+    \draw[draw=blue!24!black,line width=0.2mm,directed] (-\side,0+\e) -- (\side,0+\e) node[midway,above] { \textcolor{blue!24!black}{$\gamma_R$} };
+    \draw[draw=blue!24!black,line width=0.2mm,directed] (\side,0+\e) -- (\side,\side+\e);
+    \draw[draw=blue!24!black,line width=0.2mm,directed] (\side,\side+\e) -- (-\side,\side+\e) ;
+    \draw[draw=blue!24!black,line width=0.2mm,directed] (-\side,\side+\e) -- (-\side,0+\e) ;
+
+\node[text centered , text=white, text width=3cm] at (0,\side*0.5+\e) {\scriptsize KSL };
+
+    \draw[fill=blue!24!black!30!white] (-\side,0-\e) rectangle  (\side,-\side-\e);
+    \draw[draw=blue!24!black,line width=0.2mm,reverse directed] (-\side,0-\e) -- (\side,0-\e) node[midway,below] { \textcolor{blue!24!black}{$\gamma_L$} };
+    \draw[draw=blue!24!black,line width=0.2mm,reverse directed] (\side,0-\e) -- (\side,-\side-\e);
+    \draw[draw=blue!24!black,line width=0.2mm,reverse directed] (\side,-\side-\e) -- (-\side,-\side-\e) ;
+    \draw[draw=blue!24!black,line width=0.2mm,reverse directed] (-\side,-\side-\e) -- (-\side,0-\e) ;
+
+\node[text centered , text=white, text width=3cm] at (0,-\side*0.5-\e) {\scriptsize KSL };
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,243 @@
+\label{ch:5}
+
+In the last chapter, I have shown evidence that there are localized Majorana fermions near a linear defect in \acrshort{kqsl}. In the weak coupling regime, the interaction between the two Majorana modes at the edges is perturbative, as I will enter in more detail in this chapter. Effectively, the system is a free theory for the Majoranas with velocity given by the microscopic theory.
+
+Here I will obtain a low-energy theory from the microscopic theory obtained in the last chapter. In this regime, the gapped modes in the bulk are frozen out, and the dynamic occurs due to the itinerant Majorana fermions $b^{z}$ and $c$ in the edge. The normal modes are a linear combination of those fermions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{comment}
+        \textcolor{red!40!black}{
+        %We have seem, in the last chapter, that the defect exhibit a phase with localized Majorana fermions. In this phase, the interaction between the two edges is irrelevant (in the field theoretical sense) and the system is effectively described by a free theory for the Majoranas. In this chapter we will obtain the low energetic theory from the Hamiltonian of the last chapter by considering the modes of energy near zero (zero-energy modes around $k =0$). 
+        \begin{itemize}
+            \item Find the exact eigen-vector and eigen-energy up to linear order in momentum (also show they are localized near the edges); 
+            \item the low energy are described the a Majorana mode that is the zero-energy elementary excitation of the Hamiltonian. This operator can be written as a linear combination of the $b^{z}$ and $c$ in the edge. The hamiltonian can be written in terms of this operator $\gamma_R$ and $\gamma_L$;
+            \item then write the spin operator in this effective theory in terms of $\gamma$'s. 
+        \end{itemize}
+        The chapter is important to summarize of the last two chapter in a simple effective theory for the chiral Majorana fermions with known parameters of the microscopic theory.
+        }
+        \end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section[Linearizing the spectrum about zero momentum]{Linearizing the spectrum about $q  = 0$}
+
+In the phase in which the Majorana fermions are uncoupled, the theory reduces to the one described in chapter \ref{ch:3}. There are two zero-energy modes, both occur at zero momentum as can be seemed in figure \ref{fig:3-disp-c} and \ref{fig:4-MF-GL-disp}. Lets denote by $\vert \alpha ; q \rangle$ for $\alpha = R , L$ the two eigenvectors. These vectors satisfy the eigenvalue equation
+\begin{equation}
+    \im \tilde{A}(q) \, \vert \alpha; q  \rangle \; = \; \epsilon_{\alpha}(q) \vert \alpha; q  \rangle \; . \label{eq:5-eva}
+\end{equation}
+I am using ket notation to denote vectors in the Hilbert space represented as $\ell_y+2$ complex column vectors. When accompanied with $q$, the notation implies an explicit dependence on the momentum. The operators act as matrices and the Hamiltonian $\im \tilde{A}(q)$ was given in \eqref{eq:3-hamiltonian}.
+
+The energies go to zero at zero momentum. At first order in momentum, the energies are linear and can be written as 
+\begin{align}
+    \epsilon_{\alpha}(q) \;& = \; v_{\alpha} q \; + \; \mathcal{O}(q) \; , \quad  \; \text{for } \alpha = R , L,%\\    \epsilon_{L}(q) \;& = \; v q \; + \; \mathcal{O}(q) \; ,
+\end{align}
+where $v_R$ and $v_L$  non-zero numbers that can be identified as the Majorana velocity at opposite edges. Should be noted that $v_{R} = -v$ and $v_{L}=v$ are \say{opposite} due to the (particle-hole) symmetry of the spectrum. %I choose to denote the modes with positive velocity by $L$, meaning \say{left moving}, and by $R$, \say{right moving}, for negative velocity. 
+The $R$ and $L$ denotes Majorana fermions in opposite edges of the defect and I will call them as  \say{right moving} and \say{left moving}. Also, I will use right or left edges to denote the edges which host right or left moving Majorana fermions.
+
+Expanding the Hamiltonian and the eigenvector up to linear order in momentum,
+\begin{align}
+    \im \tilde{A}(q) \; &= \;  \im \tilde{A}^{(0)} \; + \; \im \tilde{A}^{(1)} \, q \; + \; \mathcal{O}(q) \; ,\label{5-reduced-ham}\\
+    \vert \alpha; q  \rangle  \; &= \;   \vert \alpha^{(0)} \rangle  \; + \;  \vert \alpha^{(1)} \rangle  \, q \; + \; \mathcal{O}(q) \; .
+\end{align}
+I obtain from \eqref{eq:5-eva} the reduced eigenvalue equations:
+\begin{align}
+    \im \tilde{A}^{(0)} \vert \alpha^{(0)} \rangle   \; & = \; 0 \;  \; , \label{eq:5-eva-order-zero}\\
+    \im \tilde{A}^{(0)} \vert \alpha^{(1)} \rangle  \; + \;
+    \im \tilde{A}^{(1)} \vert \alpha^{(0)} \rangle   \; & = \; v_{\alpha} \vert \alpha^{(0)} \rangle   \; . \label{eq:5-eva-order-one}
+\end{align}
+The vectors can be readily calculated using the matrix $\im \tilde{A}(q)$. Explicitly the matrices in \eqref{5-reduced-ham} are the following:
+\begin{equation}
+  \im \tilde{A}^{(0)} = 
+   \left(
+\begin{array}{cccccccccccc}
+ 0 & -i h_z  & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 %& 0 & 0 
+ \\
+ i h_z  &0  & -2iJ & 0  & 0 & 0 & 0 & 0 & 0 & 0% & 0 & 0 
+ \\
+ 0 & 2iJ &0& iJ &0  & 0 & 0 & 0 & 0 & 0% & 0 & 0 
+ \\
+ 0 & 0  & -iJ& 0  & -2iJ & 0 & 0 & 0 & 0 & 0% & 0 & 0
+ \\
+ 0 & 0 & 0  & 2iJ & 0 & iJ &0  & 0 & 0 & 0 %& 0 & 0
+ \\
+ 0 & 0 & 0 & \ddots  &  \ddots & \ddots  & \ddots & \ddots  & 0 & 0% & 0 & 0
+ \\
+ 0 & 0 & 0 & 0 & \ddots & \ddots & \ddots  & \ddots &  \ddots  & 0 & % 0 & 0 
+ \\
+0 & 0 & 0 & 0 & 0 & 0  & -iJ & 0  & -2 i J & 0 \\
+% 0 & 0 &
+0 & 0 & 0 & 0 & 0 & 0 &0  & 2iJ & 0  & i h_z  \\
+% 0 & 0 & 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -i h_z  & 0 \\
+\end{array}
+\right) \, 
+\end{equation}
+\begin{equation}
+  \im \tilde{A}^{(1)} = 
+   \left(
+\begin{array}{cccccccccccc}
+ 0 &0  & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 %& 0 & 0 
+ \\
+0 & 2 \kappa  & 0 & \textcolor{black!60}{- \kappa}  & 0 & 0 & 0 & 0 & 0 & 0% & 0 & 0 
+ \\
+ 0 & 0 & -2\kappa  & \textcolor{black!60}{0} &  \textcolor{black!60}{\kappa}  & 0 & 0 & 0 & 0 & 0% & 0 & 0 
+ \\
+ 0 & \textcolor{black!60}{- \kappa}  & \textcolor{black!60}{0} & 2\kappa  &0 & \textcolor{black!60}{- \kappa}  & 0 & 0 & 0 & 0% & 0 & 0
+ \\
+ 0 & 0 &  \textcolor{black!60}{\kappa}  & 0 & -2\kappa  & \textcolor{black!60}{0} &  \textcolor{black!60}{\kappa}  & 0 & 0 & 0 %& 0 & 0
+ \\
+ 0 & 0 & 0 & \ddots  &  \ddots & \ddots  & \ddots & \ddots  & 0 & 0% & 0 & 0
+ \\
+ 0 & 0 & 0 & 0 & \ddots & \ddots & \ddots  & \ddots &  \ddots  & 0 & % 0 & 0 
+ \\ 
+0 & 0 & 0 & 0 & 0 & \textcolor{black!60}{- \kappa}  & \textcolor{black!60}{0}& 2\kappa  &0 & 0 \\
+% 0 & 0 &
+0 & 0 & 0 & 0 & 0 & 0 &  \textcolor{black!60}{\kappa}  &0 & -2\kappa  & 0  \\
+% 0 & 0 & 
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  & 0 \\
+\end{array}
+\right) \, .
+\end{equation}
+
+
+
+
+
+The zeroth order vector solutions  are related by parity transformation and only exist in the infinite size limit. While all even components of $\vert R^{(0)} \rangle$ are zero, all odd components of $\vert L^{(0)} \rangle$ are zero. The components of the vectors can be written in terms of $\langle 0 \vert L^{(0)} \rangle$ and $\langle \ell_y+1 \vert R^{(0)} \rangle$. Assuming $\ell_y \to \infty$ hereafter, the solutions to \eqref{eq:5-eva-order-zero} are 
+\begin{align}
+    \langle y \vert R^{(0)} \rangle \; &= \;  \frac{h_z}{2J} \, (-1)^{\frac{y}{2}} \,  e^{-\frac{\ell_y-1-y}{\xi}}\,\langle \ell_y+1 \vert R^{(0)} \rangle \; ,  \quad \text{for } y  \text{ odd} \; y \leq \ell_y-1 \; , \\
+    \langle y \vert L^{(0)} \rangle \; &= \;  \frac{h_z}{2J} \, (-1)^{\frac{y}{2}} \,  e^{-\frac{y-2}{\xi}}\,\langle 0 \vert L^{(0)} \rangle \; ,  \qquad \text{for } y  \text{ even} \; y \geq 2 .
+\end{align}
+The solutions are localized at the edge of the material with a characteristic length $\xi = \frac{2}{\ln 2}$. The normalization of the vectors determines the unknown coefficient. The phase of the vector can be chosen so that
+\begin{equation}
+    \langle 0 \vert L^{(0)} \rangle \; =  \; \langle \ell_y+1 \vert R^{(0)} \rangle \; = \; \frac{-J}{\sqrt{J^2 \; + \; \frac{h_z^2}{3}}} \; .
+\end{equation}
+
+The velocity can be calculated immediately. From \eqref{eq:5-eva-order-one}, the velocity is the expectation value of $\im \tilde{A}^{(1)}$ in the zeroth-order vector\footnote{This statement is equivalent to the Feynman-Hellmann theorem, by seeing the velocity as the derivative of the energy  and $\im \tilde{A}^{(1)}$ as the derivative of the hamiltonian at $q=0$.}. It follows that
+\begin{equation}
+   v_{\alpha} = \text{sgn}(\alpha) v \; ,  \quad  v \; = \;  \big\langle  L^{(0)}  \big\vert \,  \im \tilde{A}^{(1)}  \, \big\vert \, L^{(0)} \big\rangle \; = \; \frac{\kappa h^2_z}{J^2 \; + \; \frac{h^2_z}{3}} \; .
+\end{equation}
+
+%Similarly can be calculated the vector at first order. 
+The first-order vector can be similarly calculated. However, only the values near the boundary are important since the solutions are localized. Equation \eqref{eq:5-eva-order-one} gives immediately that
+\begin{align}
+    \im h_z  \langle \ell_y \vert R^{(1)} \rangle  \; &= \; -v \,  \langle \ell_y +1 \vert R^{(0)} \rangle  \; , \\
+    - \im h_z \langle 1 \vert L^{(1)} \rangle  \; &= \; v \,  \langle 0 \vert L^{(0)} \rangle  \; ,
+\end{align}
+which implies that
+\begin{align}
+     \langle \ell_y \vert R^{(1)} \rangle  \; = \;  \langle 1 \vert L^{(1)} \rangle  \; = \;  \im \,  \frac{- J \kappa h_z \; }{\left( \, J^2 \; + \; \frac{h^2_z}{3} \, \right)^{3/2} } \; .
+\end{align}
+Using (or imposing) the normalizing condition
+\begin{equation}
+    \langle \alpha^{(0)}  \vert \alpha \rangle  \; = \; 1 \; ,
+\end{equation}
+I can show that all odd terms for $\vert R^{(1)} \rangle$ are zero, as well as all even terms in $\vert L^{(1)} \rangle$. 
+
+Altogether, the component of the vectors near the edge is (up to linear order in momentum)
+\begin{align}
+\langle 0 \vert L; q  \rangle  \; & = \;  \langle \ell_y+1 \vert R; q  \rangle  \; = \;  \frac{-J}{\sqrt{J^2 \; + \; \frac{h_z^2}{3}}}  \label{eq:5-mat-b} \\[6pt]
+\langle 1 \vert L; q  \rangle  \; & = \;   \langle \ell_y \vert R; q  \rangle  \; = \;  \im \, q \,  \frac{- J \kappa h_z \; }{\left( \, J^2 \; + \; \frac{h^2_z}{3} \, \right)^{3/2} } \label{eq:5-mat-c} %\langle \ell_y+2 \vert R; q  \rangle  \; & = \;  \frac{-J}{\sqrt{J^2 \; + \; \frac{h_z^2}{3}}} 
+%\langle \ell_y+1 \vert R; q  \rangle  \; & = \;     \frac{\im v}{h_z} \, q \,   \frac{- J \kappa h^2_z \, }{\left( \, J^2 \; + \; \frac{h^2_z}{3} \, \right)^{3/2} }
+\end{align}
+
+
+\section{Effective theory for Majorana fermions}
+The Hamiltonian 
+\begin{equation}
+    H \; = \; \sum_{q \in \frac{1}{2}\text{BZ}} \sum_{y_1,y_2} \, \im \tilde{A}_{y_1y_2}(q) \, c_{q,y_1}^{\dagger} c_{q,y_2} 
+\end{equation}
+is diagonal in the basis $\vert m; q  \rangle$ of eigenvectors of $\im \tilde{A}(q)$. As seen in the previous section, for the low-energy regime only two basis vector matter, namely $\vert L; q  \rangle $ for  $m=1$ and $\vert R; q  \rangle $ for  $m=2+\frac{\ell_y}{2}$ which are the two gapless modes in \ref{fig:3-disp-c}. The Majorana operators are\footnote{This transformation is the same as the one shown in the last chapter $U_{ym}(q) \to \langle y \vert m; q  \rangle$ in the limit of zero Mean Field $\chi_b=\chi_c=0$.}
+\begin{align}
+    c_{qy} \; & = \; \sum_{m=0}^{\ell_y+1} \; \langle y \vert m; q  \rangle \, \gamma_{qm} \; .
+\end{align}
+The operators $\gamma_{qm}$ are also Majorana operators.
+
+
+In the low energetic limit, only the modes $\vert m ;q \rangle$ with energy $\epsilon_m$ near zero are relevant. In this case, the only relevant modes $\vert m ;q\rangle$  are $\vert R; q  \rangle$ and $\vert L; q  \rangle$. The projection of the  Majorana operator in the low-energy sector is
+\begin{equation}
+    c_{qy}  \approx \; \langle y \vert R; q  \rangle \;  \gamma_{qR} \; + \;   \langle y \vert L; q  \rangle \;  \gamma_{qL} \; . \label{eq:5-c-gamma}
+\end{equation}
+The fermions $\gamma_{qR}$ and $\gamma_{qL}$ are the momentum representation of the Majorana operators localized in the right ($R$) and left ($L$) edge in the continuum limit, respectively. In the following, I will allow the sum for all modes with positive momentum $q$ bearing in mind that in low-energy theory only the near-zero momentum Majorana will be relevant. 
+%The theory is valid for momentum close to zero $q\approx 0 $
+
+Should be noted that the coefficients of the Majorana operators in \eqref{eq:5-c-gamma} are localized at the edges. That is, near the left edge $c_{qy}  \approx \langle y \vert L; q  \rangle \gamma_{qL}$  and the coefficient decays exponentially for $y > 1$ while near the right edge $c_{qy}  \approx \langle y \vert R; q  \rangle \gamma_{qR}$  and the coefficient decays exponentially for $y < \ell_y$. % The value for  and will be assumed to be zero if $y \neq 0,1,\ell_y$, or $\ell_y+1$.
+The Hamiltonian for the low-energy theory of the Majorana fermions in the defect is 
+\begin{equation}
+    H \; \approx \; \sum_{q \in \frac{1}{2}\text{BZ}} \; v q \; \left[ \, \gamma_{qL}^{\dagger}\gamma_{qL} \; - \; \gamma_{qR}^{\dagger}\gamma_{qR}   \, \right] \; + \; E_0 \; .
+\end{equation}
+
+The low-energy theory can be written in term of the Majorana field in the coordinate $x$ along with the interface of the defect. I define the Majorana fields in the continuum,
+\begin{equation}
+    \gamma_{\alpha}(x) \; := \; \sqrt{\frac{2}{\; \ell_x \; }\,} \sum_{q\geq 0} \, \left[ \; e^{\im q x} \gamma_{q\alpha} \; + \; e^{-\im q x} \gamma_{q\alpha}^{\dagger} \; \right] \; = \; \sqrt{\frac{2}{\; \ell_x \; }\,} \sum_{q} \,  e^{\im q x} \gamma_{q\alpha}  \; , \label{eq:5-gamma-def}
+\end{equation}
+for $\alpha = R, L$. The sum $\sum_{q}$ extend all real numbers. These fields satisfy the anticommutation relations for Majorana fermions
+\begin{align}
+    \{ \gamma_{\alpha}(x) \, , \, \gamma_{\alpha'}(x') \, \} \; = \; 2 \, \delta_{\alpha,\alpha'} \, \delta( x - x') \, .
+\end{align}
+The Majorana fermions have linear (i.e. relativistic) dispersion, and the kinetic term involves one derivative in the position. Using the definition \eqref{eq:5-gamma-def}, I can shown that
+\begin{equation}
+   \gamma_{\alpha}(x) (-\im \partial_x) \gamma_{\alpha}(x)\; = \;  \frac{2}{\ell_x} \sum_{q , k} \;  k \, e^{\im (q+k)x} \gamma_{q\alpha}  \gamma_{k\alpha} \; , 
+\end{equation}
+which, using the definition of the delta function and $\gamma_{q\alpha}^\dagger = \gamma_{-q,\alpha}$, implies that 
+\begin{equation}
+   \int_{-\ell_x/2}^{\ell_x/2} dx \; \gamma_{\alpha}(x) (-\im \partial_x) \gamma_{\alpha}(x)\; = \;  2 \sum_{q} \;  q \gamma_{q\alpha}^\dagger  \gamma_{q\alpha} \; , \label{eq:5-id2}
+\end{equation}
+Furthermore, the effective Hamiltonian is
+\begin{equation}
+    H_{\text{eff}} \; = \;  \frac{1}{4} \int_{-\ell_x/2}^{\ell_x/2} dx \; \left[ \, \gamma_{L} (- \im v \partial_x ) \gamma_{L} \; + \; \gamma_{R} ( \im v \partial_x ) \gamma_{R} \, \right]  \; . \label{eq:5-H-eff}
+\end{equation}
+The term $1/4$ comes from the sum being extended for positive and negative momentum and an additional half from \eqref{eq:5-id2}. This Hamiltonian describes a free theory for two chiral Majorana fermions, $\gamma_L $ and $\gamma_R$,  with velocities $v$ and $-v$ respectively.
+
+In the effective theory, other terms may be present beyond the free theory. Fortunately, the Majorana fermions emergent in the \acrshort{kqsl} must only happen in pairs. That is, as bilinears such as $\gamma_R \partial_x \gamma_R$. Any bilinear must satisfies two independent $\mathbb{Z}_2$ symmetries, which are $\gamma_R \to - \gamma_R$ and $\gamma_L \to - \gamma_L$. Note that the mass term $\gamma_R \gamma_L$ is forbidden by these symmetries and the operator  $(\gamma_R \gamma_L)^2 = -1$ is trivial due to the nature of Majorana fermions. Consequently, the lowest order operator allowed is one with four $\gamma$ and two derivatives, that is
+\begin{equation}
+    H_{\text{int}} \; \sim  \; \tilde{J}  \int_{-\ell_x/2}^{\ell_x/2} dx \; \left( \, \gamma_{L} \partial_x \gamma_{L} \right) \left( \gamma_{R}  \partial_x  \gamma_{R} \, \right)  \; .
+\end{equation}
+This interaction is irrelevant in the renormalization-group sense in low-energy. In Ref.\cite{Aasen_2020} is described how a mass term can be generated in the strong coupling regime. This mass generation beyond a critical value, $\tilde{J} > \tilde{J}_c$, for the Majorana is the continuum version of the gap opening of the chiral edge modes in the microscopic theory seen in chapter \ref{ch:4}. A similar phase transition involving the same irrelevant operator in a one-dimensional model for Majorana fermions was studied in Ref.\cite{Rahmani_Affleck_2015}.
+
+\section{Spin operator in the continuum}
+
+%The spin operator $S^{z}$ is,  by the definition of the  Majorana fermions operators \eqref{eq:2-maj-t} and \eqref{eq:3-inverse-fourier}, the following expression in terms of the Fourier transformed Majorana fermions
+Using the representation of the spin operator $S^{z}$ in terms of the Majorana fermions, given by Eqs.\eqref{eq:2-maj-t}, and performing a Fourier transform, I obtain
+\begin{align}
+    S^{z} (x,y) \; &= \; \frac{\im}{2} b^{z}_{xy} c_{xy} \\[7pt]
+  %  \; &= \;  \frac{\im}{\ell_x } \sum_{q ,k  \in \frac{1}{2}\text{BZ} }  : \left[ \, e^{ \im k x} b^{z}_{ky} \; + \; e^{ -\im k x} b^{z\dagger}_{ky}  \,\right]  \left[ \, e^{ \im q x} c_{qy} \; + \; e^{ -\im q x} c_{qy}^{\dagger} \,\right] :  \\[5pt]
+    \; &= \;  \frac{\im}{\ell_x } \sum_{q ,k  \in }   e^{ \im (k+q) x} b^{z}_{ky}  c_{qy}  \; . % \\[5pt]
+  %  \; &= \;  \frac{\im}{\ell_x } \sum_{q  \in \text{BZ} }    :b_{qy}^{z\dagger}  c_{qy} :   \\[5pt] 
+  %  \; &= \;  \frac{\im}{\ell_x } \sum_{q \in  \frac{1}{2}\text{BZ} }    :\left( \, b_{qy}^{z\dagger}  c_{qy} \, - \, c_{qy}^{\dagger}b_{qy}^{z} \, \right) :  
+\end{align}
+%\textcolor{red!60!black}{ I am not sure how to argue that $:b^{z}_{ky}  c_{qy} : = \delta_{k+q,0} :b_{qy}^{z\dagger}  c_{qy} :$, but in order to $S^z$ do not depend upon $x$ (translation invariance) the momentum $k+q$ must cancel (i.e. conservation of momentum). Other calculation would lead to :  \begin{align}     :S^{z} (x,y): \; &= \;  \frac{\im}{\ell_x } \sum_{q ,k  \in \text{BZ} }   e^{ \im (k+q) x} :b^{z}_{ky}  c_{qy} : \end{align} and I could go on without assuming anything (as I had done last year). }
+In the low energy regime, only the spin evaluated near the edge of the material has a significant projection in the gapless chiral modes. %It is simplified to a expression with only matrix elements near the edge. 
+
+%By translation invariance, the spin operator cannot depend upon the coordinate $x$. This happens because the normal ordering ensures that $k=q$.
+
+The spin operator in each edge is 
+\begin{align}
+    S^{z}_L (x) \; &\doteq  \;  S^{z} (x,1)  \; = \; \frac{\im}{\ell_x} \sum_{q,k }  \; e^{ \im (k+q) x}  \;  c_{k0}  c_{q1}   \; ,  \\
+    S^{z}_R(x) \; & \doteq \;  S^{z} (x,\ell_y)  \; = \; \frac{\im}{\ell_x} \sum_{q,k }  \; e^{ \im (k+q) x}  \;   c_{k,\ell_y+1}  c_{q,\ell_y}     \; .
+\end{align}
+Using the low-energy relation \eqref{eq:5-c-gamma}, these spin operators are then equal to 
+\begin{align}
+    S^{z}_L (x) \; & = \; \frac{\im}{\ell_x} \sum_{q,k   }  \;  \;  \, \langle 0 \vert L(k) \rangle  \, \langle 1 \vert L; q  \rangle \,   \;  \gamma_{kL}  \gamma_{qL}  \; ,  \\
+    S^{z}_R(x) \; &= \; \frac{\im}{\ell_x} \sum_{q,k   }  \;  \langle \ell_y+1 \vert R(k) \rangle \langle \ell_y \vert R; q  \rangle \,  \; \gamma_{kR}  \gamma_{qR} \; .
+\end{align}
+%\begin{align}    S^{z}_L (x) \; &\doteq  \;  :S^{z} (x,1):  \; = \; \frac{\im}{\ell_x} \sum_{q   \in \frac{1}{2}\text{BZ} }  \; :\left( \, c_{q0}^{\dagger}  c_{q1} \, - \, c_{q1}^{\dagger}c_{q0} \, \right) :  \; ,  \\     S^{z}_R(x) \; & \doteq \;  :S^{z} (x,\ell_y):  \; = \; \frac{\im}{\ell_x} \sum_{q \in \frac{1}{2}\text{BZ} }  \; :\left( \, c_{q,\ell_y+1}^{\dagger}  c_{q,\ell_y} \, - \, c_{q,\ell_y}^{\dagger}c_{q,\ell_y+1} \, \right) :  \; .\end{align} Using the low-energy relation \eqref{eq:5-c-gamma}, these spin operators are then equal to  \begin{align}    S^{z}_L (x) \; & = \; \frac{2}{\ell_x} \sum_{q   \in \frac{1}{2}\text{BZ} }  \; \text{Im} \left[ \, \langle 0 \vert L; q  \rangle  \, \langle 1 \vert L; q  \rangle^{\ast} \, \right]  \;  \gamma_{qL}^{\dagger}  \gamma_{qL}  \; ,  \\     S^{z}_R(x) \; &= \; \frac{2}{\ell_x} \sum_{q   \in \frac{1}{2}\text{BZ} }  \; \text{Im} \left[ \langle \ell_y+1 \vert R; q  \rangle \langle \ell_y \vert R; q  \rangle^{\ast} \, \right] \; \gamma_{qR}^{\dagger}  \gamma_{qR} \; . \end{align} 
+Moreover, using the values for the matrix elements in \eqref{eq:5-mat-b} and \eqref{eq:5-mat-c}, then I obtain the spin operators
+%\begin{equation}     S^{z}_{\alpha} (x) \;  = \;  \frac{2}{\ell_x} \sum_{q  \in \frac{1}{2}\text{BZ} } \;  s q \;  \gamma_{q\alpha}^{\dagger} \gamma_{q\alpha} \; = \;\gamma_{\alpha}(x)  ( - \im s \partial_x ) \gamma_{\alpha}(x) \; ,  \label{eq:5-Spin} \end{equation}
+\begin{equation}
+     S^{z}_{\alpha} (x) \;  = \;  -\frac{1}{\ell_x} \sum_{q,k } \;  s_{\alpha} q  \, e^{\im (q+k) x} \;  \gamma_{k\alpha} \gamma_{q\alpha} \; = \;- \frac{1}{2} \, \gamma_{\alpha}(x)  ( - \im s_{\alpha} \partial_x ) \gamma_{\alpha}(x) \; ,  \label{eq:5-Spin}
+\end{equation}
+and where
+\begin{equation}
+    s_\alpha \; = \; \text{sgn}(\alpha) \, s \; , \quad \text{and } \quad s \; = \;   \frac{ \; J^2 \kappa h_z \; }{\left( \, J^2 \; + \; \frac{h^2_z}{3} \, \right)^{2} } \; .
+    \end{equation}
+%The Fourier transformed spin operator is   \begin{equation}     S^{z}_{\alpha}(q) \; = \; \sum_{x} e^{\im q x} \, S^{z}_{\alpha}(x) \; = \; \sum_{k} \, s_{\alpha} k \, \gamma_{k+q}^{\dagger}\gamma_{k} \; . \label{eq:5-spin-momentum} \end{equation}
+
+
+%\textcolor{red!60!black}{% I don't know what exactly I can say more for ending this chapter. Perhaps, I could say that this expression for the (normal ordered) spin operator is expected in the field theory, as said in \cite{Aasen_2020}. I'm not sure if \eqref{eq:5-Spin} is correct. If I hadn't ignore the "non-normal-ordered" terms I will be four terms and two sums in momentum. When I had done previously this calculation I hadn't made this simplification... With only one sum in momentum the spin correlation }
+
+
+The form for the spin operator is expected from symmetry arguments for the effective low-energy theory, see Ref.\cite{Aasen_2020}. % At opposite edges there are modes with opposite chiralities, and then the spin has opposite signal.
+
+
+In this chapter, I have derived an explicit expression for the spin operators located in the edges of the \acrshort{kqsl}. The derivation was made from the lattice model, and the dependence in $h_z$ indicates the importance of Zeeman interaction in the edges. In the next chapter, this representation will be used to calculate the nuclear magnetic linear response.

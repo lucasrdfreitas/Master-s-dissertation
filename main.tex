@@ -1,0 +1,190 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+
+\usepackage[a4paper,width=150mm,top=35mm,bottom=35mm,bindingoffset=6mm]{geometry}
+\usepackage{caption}
+\captionsetup[figure]{font=footnotesize}  %fontsize figute caption
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\pagestyle{headings}
+\usepackage{cite,mathtools,amsfonts}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{ graphicx, calligra, amsmath, bm, multicol, braket,verbatim,amssymb,mathtools,standalone,hyperref,caption,subcaption,extarrows}
+\usepackage{tikz,tikz-3dplot}
+\usepackage{tikzscale}
+\usetikzlibrary{decorations.markings}
+
+\tikzstyle{axis} = [draw=black, line width=0.6mm , ->]
+\tikzstyle{line} = [draw=black, line width=0.5mm]
+
+
+\graphicspath{ {images/} }
+\hypersetup{
+    linktocpage,
+    colorlinks=true,
+    linkcolor=RoyalBlue, %blue!60!black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Lucas' Master project},
+    pdfauthor={Lucas Freitas}
+    pdfpagemode=FullScreen,
+    citecolor=Purple,
+}
+\def \im{\dot{\imath}}
+\def\bra#1{\mathinner{\langle{#1}|}}
+\def\ket#1{\mathinner{|{#1}\rangle}}
+
+
+\renewcommand{\bf}{\mathbf}
+\renewcommand{\rm}{\mathrm}
+\renewcommand{\cal}{\mathcal}
+
+\usepackage{amsthm}
+\usepackage[most]{tcolorbox}
+\numberwithin{equation}{section}   
+\newtheorem*{remark}{Remark}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{corollary}{Corollary}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%\usepackage{biblatex}
+%\addbibresource{references.bib}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+%\setlength\columnsep{25pt}
+\renewcommand{\baselinestretch}{1.2} % space btw lines
+
+\usepackage{titlesec}    % for change the Chapter title fontsize
+\titleformat{\chapter}[display]{\normalfont  \Large \bfseries}{\chaptertitlename\ \thechapter}{20pt}{ \LARGE }
+
+\usepackage{dirtytalk}
+\usepackage[xindy]{glossaries}
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}} 
+%normally the glossary link is related to the linkcolor of hyperlink; to adjust the color independently I need the above code. 
+\makeglossaries
+
+\newacronym{rucl}{$\alpha\text{-RuCl}_3$}{ruthenium trichloride}
+\newacronym{hbz}{$\frac{1}{2}\text{BZ}$}{half Brillouin zone}
+\newacronym{bz}{$\text{BZ}$}{Brillouin zone}
+\newacronym{nn}{NN}{nearest-neighbor}
+\newacronym{nnn}{NNN}{next-nearest-neighbor}
+%\newacronym{nnn}{NNN}{Next Nearest Neighbor}
+\newacronym{qsl}{QSL}{quantum spin liquid}
+\newacronym{kqsl}{KSL}{Kitaev spin liquid}
+\newacronym{nmr}{NMR}{nuclear magnetic resonance}
+\newacronym{t1}{T1}{spin-lattice relaxation time}%{It is the time necessary to a material, under a constant magnetic field, to recovery to its equilibrium magnetisation value after a saturating pulse of the applied magnetic field.}
+% Table of acronyms : I will try to use the minimal as possible  QSL , KQSL , NMR , 
+% notation and definitions : T1 , \chi , \chi^{
+
+
+% Cubic spin-lattice relaxation rate in Kitaev materials
+\title{
+{\large Universidade Federal do Rio Grande do Norte \\
+Centro de Ciências Exatas e da Terra \\
+Programa de Pós-Graduaç\~ao em Física \\ }
+{\includegraphics[ width = 0.5 \textwidth]{ufrn_brasao_flat.pdf}} %\vspace{1cm}
+{ \\ \textbf{Gapless excitations in Kitaev materials with defects}  } \\ %\vspace{1cm} 
+{\small Natal - RN}
+}
+\author{\small Lucas Rodrigues Delgado de Freitas}
+\date{ \small Fevereiro de 2021}
+
+
+
+\begin{document}
+\maketitle
+
+\chapter*{Abstract}
+%A \acrfull{qsl} appears in the notable Kitaev honeycomb spin-half model. The most promising Kitaev material, \acrshort{rucl}, is being tested for revealing gapless excitation. This work provide an explanation for this experimental measure as a result from the contribution from the Majorana modes localized in linear defects.
+
+% explain the controversy: some experiments, such as the \acrfull(nmr), indicates the presence of gapless excitation in the \acrshort{kqsl};
+% then explain: in this work I study the contribution of the Majoranas gapless modes to the relaxation rate in this gapped phase using the mean field approximation. 
+
+
+A \acrlong{qsl} is a magnetic phase of matter that is remarkable for its ground state long-range entanglement and fractional excitations. A \acrlong{qsl}  appears in the well-known Kitaev honeycomb spin-half model. In a magnetic field, there is a phase transition to a topological phase with an energy gap in the bulk and chiral Majorana fermions at the edge. However, recent \acrlong{nmr} experiments suggest excitations without a gap in this phase, signalled by the cubic temperature dependence of the spin-lattice relaxation rate at low temperatures. 
+
+In this work, I propose a mechanism to account for this experimental result. % based on the Kitaev model.
+I use the localization of chiral Majorana modes in defects to explain the presence of gapless modes in the bulk. % The interaction between the chiral modes in the defects is treated with mean-field approximation.
+Treating the weak interaction between the chiral modes in the defects within a mean-field approximation, I find that these modes remain gapless when the interaction is below a critical value that depends on the magnetic field strength. I used the effective low-energy theory to calculate the spin-lattice relaxation rate and found a behavior that agrees with the experimental result.
+
+\textbf{Keywords}:
+    Kitaev model, Quantum spin liquids, Majorana fermions, Mean-field, Nuclear relaxation rate.
+
+
+% it has 192 words .
+
+\chapter*{Resumo}
+
+Um líquido quântico de spin é uma fase magnética da matéria que é  notável  pelo seu emaranhamento de longo alcance nos estados fundamentais  e excitações fracionalizadas.  Um líquido quântico de spin é realizado no modelo de Kitaev na rede hexagonal.  Sob aplicação de um campo magnético, tem-se uma transição de fase para uma fase topológica com um gap de energia no interior do material e férmions de Majorana quirais na borda. Entretanto, experimentos recentes de ressonância magnética nuclear indicam a existência de  excitações sem gap de energia nessa fase, indicada pela dependência cúbica na temperatura na taxa de relaxação spin-rede em baixas temperaturas.
+
+Nesse trabalho, eu proponho um mecanismo para explicar esse resultado experimental. Eu utilizei a localização de modos de Majorana quiral em defeitos para explicar a presença de modos sem gap no interior do material. Tratando a interação entre os modos quirais nos defeitos por meio de aproximação de campo médio, eu encontrei que esses modos continuam sem gap quando a interação é mais fraca que um valor crítico dependente do campo magnético. Usei a teoria efetiva de baixas energias para calcular a taxa de relaxação spin-rede e encontrei um valor que concorda com o resultado experimental.
+
+\textbf{Palavras-chave}:
+    Modelo de Kitaev,
+    Líquidos quânticos de spin,
+    Férmions de Majorana,
+    Campo médio,    
+    Taxa de relaxação nuclear.
+
+%\chapter*{Dedication} To ...
+% \chapter*{Declaration} I declare that..
+%\chapter*{Acknowledgements}
+%I want to thank...
+
+
+\renewcommand{\baselinestretch}{.01} 
+\setlength{\parindent}{.01em}
+\tableofcontents
+\listoffigures 
+
+
+\clearpage
+\printglossary
+\setlength{\parindent}{2em}
+\renewcommand{\baselinestretch}{1.35} 
+
+
+\chapter{Introduction}
+\input{chapters/introduction}
+
+\chapter{The Kitaev honeycomb model}
+\input{chapters/chapter02}
+
+\chapter{Majorana edge modes in the Kitaev model}
+\input{chapters/chapter03}
+
+\chapter{Majorana fermions %Mean Field for the Majoranas %gapless modes 
+in linear defects}
+\input{chapters/chapter04}
+
+\chapter{Low energy effective field theory}
+\input{chapters/chapter05}
+
+\chapter[Spin-lattice relaxation rate]{Spin-lattice relaxation time $T_1$}
+\input{chapters/chapter06}
+
+\chapter{Conclusion}
+\input{chapters/conclusion}
+
+%\appendix
+%\chapter{Linear response theory and NMR}
+%\input{chapters/appendix01}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+

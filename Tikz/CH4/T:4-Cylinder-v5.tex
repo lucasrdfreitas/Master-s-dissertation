@@ -1,0 +1,80 @@
+\documentclass{standalone}  %
+\usepackage[margin=2cm]{geometry}
+\usepackage{tikz,verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{decorations.markings}
+\tikzstyle arrowstyle=[scale=1]
+
+\tikzstyle directed=[postaction={decorate,decoration={markings,
+    mark=at position 0.52 with {\arrow[arrowstyle]{stealth}}}}]
+\tikzstyle reverse directed=[postaction={decorate,decoration={markings,
+    mark=at position 0.48 with {\arrowreversed[arrowstyle]{stealth};}}}]
+
+\begin{tikzpicture}
+%\draw (0,0) ellipse (1.25 and 0.5);
+%\draw (-1.25,0) -- (-1.25,-3.5);
+%\draw (-1.25,-3.5) arc (180:360:1.25 and 0.5);
+%\draw (1.25,-3.5) -- (1.25,0);  
+
+
+
+\clip (-1.75,-4.25) rectangle (1.75,1);
+
+
+% drawing the bulk part of the diagram 
+\draw[fill=blue!24!black!30!white ,opacity=0.85] (-1.25,0) -- (-1.25,-3.5) arc (180:360:1.25 and 0.5) -- (1.25,0) arc (0:180:1.25 and -0.5); 
+
+% covering the space between the edges 
+\fill[white ] (-0.25,-.495) -- (-0.25,-4.1)-- (0.25,-4.1) -- (0.25,-0.49)arc (75:98:1.25 and 0.52); %edge 
+
+% re-filling the back of the material that can be seeing in the space between the edges
+\fill[blue!24!black!30!white ,opacity=0.3]  (0.,-3) arc (270:281.5:1.25 and -0.5) -- (0.25,-.4861) arc (78.444:90:1.25 and -0.4861);
+\fill[blue!24!black!30!white ,opacity=0.3] (0.,-3) arc (270:258.5:1.25 and -0.49) -- (-0.25,-.4861) arc (101.556:90:1.25 and -0.4861);
+
+% paint the upper ellipsis :  it is faded meaning that it is far  
+\fill[fill=blue!24!black!30!white ,opacity=0.3] (0,0) ellipse (1.25 and 0.496);
+
+
+% labelling
+\node[text centered , text=white, text width=3cm, rotate=-90 ] at (-0.7,-2) {\scriptsize KSL };
+\node[text centered , text=white, text width=3cm, rotate= 90 ] at (0.7,-2) {\scriptsize KSL };
+
+\draw[directed ] (-0.25,-.485) -- (-0.25,-4) ; %edge arrows
+\draw[directed ] (0.25,-4) -- (0.25,-0.485) ; %edge arrows
+
+
+% for the modes in the inferior ellipsis:
+\draw [dashed,directed,opacity=0.55] (-1.25,-3.5) arc (180:360:1.25 and -0.5);
+%\draw [dashed, reverse directed,opacity=0.5] (1.25,-3.5) arc (360:270:1.25 and -0.5);
+\draw [directed, opacity=0.8] (1.25,-3.5) arc (0:78:1.25 and -0.5);
+\draw [reverse directed, opacity=0.8] (-1.25,-3.5) arc (180:102:1.25 and -0.5);
+
+% for the modes in the superior ellipsis:
+\draw [reverse directed, opacity=0.8] (-1.25,0) arc (180:360:1.25 and -0.5);
+\draw [reverse directed, opacity=0.8] (1.25,0) arc (0:78:1.25 and -0.5);
+\draw [directed, opacity=0.8] (-1.25,0) arc (180:102:1.25 and -0.5);
+%\draw [  directed] (1.25,0) arc (360:270:1.25 and -0.5);
+
+% draw local coordinates x and y. x point in the vertical direction and y curls in the cylinder
+\draw [|->,draw=cyan!80!black, line width=0.40mm, opacity=0.8] (+1.25,.5) arc (360:180:1.25 and -0.5) node[left] {\small $\ell_y$};
+\draw [<->,draw=orange!80!black, line width=0.40mm, opacity=0.8] (1.25+.25,0) -- (1.25+.25,-3.5)  node[below] {\small $\ell_x$};
+\end{tikzpicture}
+\end{document}
+
+
+
+
+
+
+

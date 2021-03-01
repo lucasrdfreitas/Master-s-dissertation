@@ -1,0 +1,47 @@
+\documentclass{standalone}  %
+\usepackage[margin=2cm]{geometry}
+\usepackage{tikz,verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{decorations.markings}
+\tikzstyle arrowstyle=[scale=1]
+
+\tikzstyle directed=[postaction={decorate,decoration={markings,
+    mark=at position 0.56 with {\arrow[arrowstyle]{stealth}}}}]
+\tikzstyle reverse directed=[postaction={decorate,decoration={markings,
+    mark=at position 0.44 with {\arrowreversed[arrowstyle]{stealth};}}}]
+
+\begin{tikzpicture}
+\draw[fill=blue!24!black!30!white,opacity=0.85] (0,0) ellipse (1.25 and 0.5);
+
+\draw (-1.25,0) -- (-1.25,-3.5);
+\draw (-1.25,-3.5) arc (180:360:1.25 and 0.5);
+\draw [dashed,directed] (-1.25,-3.5) arc (180:260:1.25 and -0.5);
+\draw [dashed, reverse directed] (1.25,-3.5) arc (360:260:1.25 and -0.5);
+\draw (1.25,-3.5) -- (1.25,0);  
+
+%draw[fill= white, draw = white ] (-0.25,-.48) -- (-0.25,-4.1)-- (0.25,-4.1) -- (0.25,-0.48) -- (-0.25,-.48) ; %edge 
+\draw [dashed, reverse directed] (1.25,-3.5) arc (360:260:1.25 and -0.5);
+\draw[fill=blue!24!black!30!white, draw =blue!24!black!30!white ,opacity=0.85] (-0.25,-.48) -- (-0.25,-2.9)-- (0.25,-2.9) -- (0.25,-0.48) -- (-0.25,-.48) ;
+\draw[fill=blue!24!black!30!white ,opacity=0.85] (-1.25,0) -- (-1.25,-3.5) arc (180:360:1.25 and 0.5) -- (1.25,0) arc (0:180:1.25 and -0.5); %bulk
+\node[text centered , text=white, text width=3cm, rotate=-90 ] at (-0.7,-2) {\scriptsize KSL };
+\node[text centered , text=white, text width=3cm, rotate= 90 ] at (0.7,-2) {\scriptsize KSL };
+
+\draw[directed ] (-0.25,-.485) -- (-0.25,-4) ; %edge arrows
+\draw[directed ] (0.25,-4) -- (0.25,-0.485) ; %edge arrows
+\end{tikzpicture}
+\end{document}
+
+
+% fill for the bulk : fill=blue!24!black!30!white
+

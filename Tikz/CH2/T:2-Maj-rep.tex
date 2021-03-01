@@ -1,0 +1,46 @@
+\documentclass{standalone}  
+\usepackage{tikz,comment}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+
+
+
+
+
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\def \mar {.5}
+
+\begin{tikzpicture}[>=latex]
+
+\clip (0.1+\mar,  -0.438675 +\mar+.05) rectangle (2.4-\mar, 1.6660-\mar+.1);
+
+
+    \node[circle, fill=black , inner sep=1pt] (ck) at ( 1 , 0.577 ) {};
+	\node[circle, fill=black,  inner sep=1pt] (cj) at ( 1.5, 0.866) {};
+	
+    \node[circle, fill=red!80!black, inner sep=1pt] (bxk) at ( 1.15, 0.66 )  {};
+    \node[circle, fill=green!80!black, inner sep=1pt] (byk) at ( 0.85,0.66 )  {};    
+    \node[circle, fill=blue!80!black, inner sep=1pt] (bzk) at ( 1, 0.43 )  {};     
+    \node[circle, fill=red!80!black, inner sep=1pt] (bxj) at ( 1.35, 0.779 )  {};
+    \node[circle, fill=green!80!black, inner sep=1pt] (byj)  at ( 1.65,0.779 )  {}; 
+    \node[circle, fill=blue!80!black, inner sep=1pt] (bzj) at ( 1.5, 1.02 )  {};
+
+
+   % \node  at ( 1 , 0.577+.5 ) {\tiny $c_k$};        \node  at ( 1.15, 0.66 +.2)  {\tiny$b_k^x$};    \node  at ( 0.85,0.66+.2 )  {\tiny $b_k^y $};        \node  at ( 1, 0.43-.2)  {\tiny $b_k^z$};   
+
+% correct the origin
+% transform the point (1.25,0.7215) into the new origin
+
+
+\end{tikzpicture}
+\end{document}
+

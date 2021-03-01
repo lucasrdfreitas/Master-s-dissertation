@@ -1,0 +1,109 @@
+\documentclass{standalone}  %
+\usepackage[margin=2cm]{geometry}
+\usepackage{tikz,verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\def \h { 0.57735026918}  % 1/sqrt(3) comprimento  y  de uma celula                                     even (White, 2y) to odd (black ,2y+1) 
+\def \d { 0.28867513459}  % 1/ 2 sqrt(3)  distancia  y  entre celulas                                   odd (black , 2y-1) to even (white , 2y)
+\def \c { 0.5}           % 1/2 distancia  x  entre celulas  
+
+\def \v { 0.86602540378 }  % sqrt(3)/ 2   distancia  y  de duas celulas                                   odd-odd or even-even 
+
+% We will also add a margin for the arrows
+\def \mar {0.5}
+
+\begin{tikzpicture}[>=latex]
+
+
+\begin{comment}
+
+    % For the arrows at the Black/Odd sites
+        \foreach \y in {-1,0,1} {
+           \node at (-1-2- \mar  , \v*\y ) (input1\y) { };
+           \node at (1.5+2+ 1.6*\mar , \v*\y ) (out1\y) {};   %{ $\,$  $(2*\y+1)$ } ;
+            \draw[->][line width=0.312mm, gray ] (input1\y) -- (out1\y);
+        }
+        
+    % For the arrows at the White/Even sites
+        \foreach \y in {-1,0,1} {
+           \node at (-1 -2- \mar  , \v*\y -\d ) (input2\y) { };
+           \node at (1.5 +2+ 1.6*\mar , \v*\y - \d ) (out2\y) {};   %{ $\,$  $(2*\y)$ } ;
+            \draw[->][line width=0.312mm, gray ] (input2\y) -- (out2\y);
+        }
+    
+    
+    % For the Vertical arrows
+        \foreach \x in {-6 , -4 , -2 , 0 , 2 , 4, 6 } {
+            \node at ( \x*\c , -\mar  - 2*\d - \h  ) (input3\x) { };
+            \node at ( \x*\c, 1.6*\mar + \d + \h ) (out3\x) { } ;
+            \draw[->][line width=0.312mm, gray ] (input3\x) -- (out3\x);
+        }
+
+\end{comment}
+
+
+% And now lets draw the circles
+
+% For bigger latices I would first use a For in the \x direction in a unit cell, and then in the \y. Unfortunately the in two case I would find a circle that do not belong to a hexagon .... It easier to just write explicitly
+
+
+
+\foreach \b in {0,1}{    
+% For lines -1 and 0    
+
+\foreach \a in {-2,0,2} {
+	\node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B21\b\a) at ( \a + \c, \v + 2*\v*\b ) {};
+    \node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B11\b\a) at ( -1+\a+\c, \v + 2*\v*\b  ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W21\b\a) at ( \a , -\d +\v+ 2*\v*\b  ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W11\b\a) at ( -1+\a , -\d + \v+ 2*\v*\b  ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W31\b\a) at ( 1+\a , -\d +\v + 2*\v*\b  ) {};
+    \draw[draw=black!500, line width=0.4mm] (W11\b\a)--(B11\b\a)--(W21\b\a)--(B21\b\a)--(W31\b\a);
+}   
+
+% For lines 1 and 2
+
+\foreach \a in {-2,0,2}{
+	\node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B22\b\a) at ( \a ,0 + 2*\v*\b ) {};
+    \node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B12\b\a) at ( -1+\a,0 + 2*\v*\b ) {};
+    \node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B32\b\a) at ( 1+\a,0 + 2*\v*\b ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W22\b\a) at ( \a + \c, -\d + 2*\v*\b ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W12\b\a) at ( -1 +\a + \c , -\d+ 2*\v*\b  ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W32\b\a) at ( 1 +\a  +\c, -\d+ 2*\v*\b  ) {};
+   \draw[draw=black!500, line width=0.4mm] (B12\b\a)--(W12\b\a)--(B22\b\a)--(W22\b\a)--(B32\b\a)--(W32\b\a);
+    \draw[draw=black!500, line width=0.4mm] (B12\b\a)--(W11\b\a) (B22\b\a)--(W21\b\a);
+    \draw[draw=black!500, line width=0.4mm] (B32\b\a)--(W31\b\a);
+}    
+
+% For lines 3 and 4
+
+\foreach \a in {-2,0,2}{
+	\node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B23\b\a) at ( \c+\a, -\v + 2*\v*\b  ) {};
+    \node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B13\b\a) at ( -1+\c+\a, -\v+ 2*\v*\b  ) {};
+    \node[circle, fill=black, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (B33\b\a) at ( 1 +\c+\a, -\v+ 2*\v*\b  ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W13\b\a) at ( \a, -\d -\v + 2*\v*\b ) {};
+    \node[circle, fill=white, draw=black!500, line width=0.45mm, inner sep=2.5pt, minimum size=4pt] (W23\b\a) at ( 1+\a, -\d -\v + 2*\v*\b ) {};
+    \draw[draw=black!500, line width=0.4mm] (B13\b\a)--(W13\b\a)--(B23\b\a)--(W23\b\a)--(B33\b\a);
+    \draw[draw=black!500, line width=0.4mm] (B13\b\a)--(W12\b\a) (B23\b\a)--(W22\b\a);
+    \draw[draw=black!500, line width=0.4mm] (B33\b\a)--(W32\b\a);
+}    
+}
+
+\draw[->,draw=blue!90!black!60!, line width=0.4mm] (0.01,-\d-\v - 0.01 + \v + \d)--( -1+\c - 0.08, -\d +0.125 + \v +\d ) node[left] { \textcolor{blue!90!black!80!}{$n_{2}\, $} };
+\draw[->,draw=blue!90!black!60!, line width=0.4mm] ( -0.01,-\d -\v - 0.01 + \v + \d)--(\c + 0.08, -\d + 0.125 + \d+ \v ) node[right] {\textcolor{blue!90!black!80!}{$\, n_{1}$}};
+
+\draw[->,draw=red!70!black!70!, line width=0.4mm] (-2,0)--( -2+\c+0.085, -\d-0.05 ) node[midway,below] { \textcolor{red!70!black!70!}{$e_{2} \, $} };
+\draw[->,draw=red!70!black!70!, line width=0.4mm] (-2,0)--( -3+\c -0.085, -\d- 0.05 ) node[midway,below] { \textcolor{red!70!black!70!}{$\,e_{3}$} };
+\draw[->,draw=red!70!black!70!, line width=0.4mm] (-2,0)--( -2, -\d+\v+0.11 ) node[midway,right] { \textcolor{red!70!black!70!}{$e_{1}$} };
+
+\end{tikzpicture}
+\end{document}

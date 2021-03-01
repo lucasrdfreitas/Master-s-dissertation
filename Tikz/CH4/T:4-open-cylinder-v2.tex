@@ -1,0 +1,44 @@
+\documentclass{standalone}  %
+\usepackage[margin=2cm]{geometry}
+\usepackage{tikz,verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{decorations.markings}
+\tikzstyle arrowstyle=[scale=1]
+
+\tikzstyle directed=[postaction={decorate,decoration={markings,
+    mark=at position 0.52 with {\arrow[arrowstyle]{stealth}}}}]
+\tikzstyle reverse directed=[postaction={decorate,decoration={markings,
+    mark=at position 0.48 with {\arrowreversed[arrowstyle]{stealth};}}}]
+    
+\def \side {2}
+\def \hight {3}
+\def \mar {0.2}
+
+\begin{tikzpicture}[>=stealth]
+
+\clip (-\side -\mar,-\hight-\mar-.45) rectangle  (\side+\mar,\hight+\mar+1.5);
+
+
+    \fill[fill=blue!24!black!30!white,opacity = 0.8] (-\side,-\hight) rectangle  (\side,\hight);
+    \node[text centered , text=white, text width=3cm] at (0,0) {\small KSL };    
+    \draw[reverse directed, thick] (-\side,\hight) -- (\side,\hight);
+    \draw[directed, thick] (\side,-\hight) -- (\side,\hight) ;
+    \draw[directed, thick] (-\side,\hight) -- (-\side,-\hight) ;
+    \draw[reverse directed, thick] (\side,-\hight) -- (-\side,-\hight) ;
+
+
+
+
+\end{tikzpicture}
+\end{document}

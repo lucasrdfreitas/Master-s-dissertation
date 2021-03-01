@@ -1,0 +1,81 @@
+\documentclass{standalone}  
+\usepackage{tikz,comment}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+
+
+
+
+
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\def \h { 0.57735026918}  % 1/sqrt(3) comprimento  y  de uma celula                                     even (White, 2y) to odd (black ,2y+1) 
+\def \d { 0.28867513459}  % 1/ 2 sqrt(3)  distancia  y  entre celulas                                   odd (black , 2y-1) to even (white , 2y)
+\def \c { 0.5}           % 1/2 distancia  x  entre celulas  
+\def \v { 0.86602540378 }  % sqrt(3)/ 2   distancia  y  de duas celulas                                   odd-odd or even-even 
+
+
+\def \mar {0.2}  % margin for the clip
+
+\def \l {7}         %horizontal length
+
+\begin{tikzpicture}[>=latex]
+
+
+
+
+
+\draw[<-,draw=cyan!80!black, line width=0.40mm] (2+.6, -4*\d -\v -.15 ) --  (2+.6,\v+.15);
+\node at ( 2.65, -2*\d ) [right] { \scriptsize \textcolor{cyan!75!black}{\small $\ell_y$}   };
+\clip (-\mar+1+ \c-.75,  \v -2*\d -2*\d-2*\v -\mar -.5) rectangle (\mar+2+.75+.3,\v+\mar+1);
+
+\foreach \a in {1}{
+  %      \draw[draw=blue!80!black, line width=0.40mm] ( \c +\a, \v  )-- ( \c+\a, \v + \c);
+        \draw[draw=blue!80!black, line width=0.40mm] ( \c+\a, -\d )-- ( \c+\a, -\d -\v+\d);
+  %      \draw[draw=blue!80!black, line width=0.40mm] ( \c +\a, \v -\c-2*\d-2*\v )-- ( \c+\a, \v -\c -\c-2*\d-2*\v);
+}
+
+
+\foreach \b in {-1,0}{    
+    \foreach \a in {1} {
+   %     \draw[draw=red!80!black, line width=0.40mm] ( \a , -\d +\v+ 2*\v*\b    ) -- ( \a -\c, -\d +\v+ 2*\v*\b   +\d );
+  %      \draw[draw=green!80!black, line width=0.40mm] (\a , -\d +\v+ 2*\v*\b - \v+\d )-- ( \a -\c,  -\d +\v+ 2*\v*\b - \v);
+            }   
+}
+
+
+\foreach \b in {-1,0}{    
+    \foreach \a in {1} {    
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B2\b\a) at ( \a + \c, \v + 2*\v*\b   ) {};
+        \node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W3\b\a) at ( \a +1, -\d +\v+ 2*\v*\b    ) {};
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B4\b\a) at ( \a +1, -\d +\v+ 2*\v*\b - \v+\d)  {};
+    	\node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W5\b\a) at ( \a -\c + 1, -\d +\v+ 2*\v*\b - \v) {};  	
+ %   	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B6\b\a) at  ( \a , -\d +\v+ 2*\v*\b - \v+\d ) {};
+    %	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B2r\b\a) at ( \a + \c+1, -\d +\v+ 2*\v*\b+\d   ) {}; 
+%    	\node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W5r\b\a) at ( \a -\c + 2, -\d +\v+ 2*\v*\b - \v) {};    		
+    }   
+}
+
+
+        \draw[draw=red!80!black, line width=0.40mm] (B201)--(W301);
+  %      \draw[draw=green!80!black, line width=0.40mm] (B2r01)-- (W301);        
+        \draw[draw=blue!80!black, line width=0.40mm] (W301)--(B401);       
+  %      \draw[draw=red!80!black, line width=0.40mm] (W501)--(B601);        
+        \draw[draw=green!80!black, line width=0.40mm] (B401)-- (W501);
+        \draw[draw=red!80!black, line width=0.40mm] (B2-11)--(W3-11);
+    %    \draw[draw=green!80!black, line width=0.40mm] (B2r-11)-- (W3-11);        
+        \draw[draw=blue!80!black, line width=0.40mm] (W3-11)--(B4-11);       
+     %   \draw[draw=red!80!black, line width=0.40mm] (W5-11)--(B6-11);        
+        \draw[draw=green!80!black, line width=0.40mm] (B4-11)-- (W5-11);
+
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,158 @@
+\documentclass{standalone}  
+\usepackage{tikz,comment}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1pt}
+%%%
+\usetikzlibrary{arrows} 
+
+
+
+
+
+\begin{document}
+% Define the layers to draw the diagram
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\def \h { 0.57735026918}  % 1/sqrt(3) comprimento  y  de uma celula                                     even (White, 2y) to odd (black ,2y+1) 
+\def \d { 0.28867513459}  % 1/ 2 sqrt(3)  distancia  y  entre celulas                                   odd (black , 2y-1) to even (white , 2y)
+\def \c { 0.5}           % 1/2 distancia  x  entre celulas  
+\def \v { 0.86602540378 }  % sqrt(3)/ 2   distancia  y  de duas celulas                                   odd-odd or even-even 
+
+
+\def \mar {0.2}  % margin for the clip
+
+\def \l {11}         %horizontal length
+\def \lm {\l-1}
+\def \lmm {\l-2}
+
+\begin{tikzpicture}[>=latex]
+
+
+
+
+
+ \clip (-\mar+1, \v +\h -5*\v  -\mar ) rectangle (\l+\mar+\c-1, \v +2*\v +\mar);
+% \clip (-\mar+1,  \v -2*\d -2*\d-2*\v -\mar ) rectangle (\l+\mar+1,\v+\mar);
+
+
+
+%%%%%%%%%%%% For the interaction between the edges of the defect %%%%%%%%%%%%%%%%%%%%
+\foreach \b in {-1}{
+    \foreach \a in {3,4,5,6,7,8}{
+        \draw[draw=blue!60!white, dashed, line width=0.40mm] ( \c +\a, \v +2*\v*\b  )--( \a , -\d +\v    );
+    }
+}
+\node at ( 5.74 , -.10  ) {\textcolor{blue!60!white}{$\tilde{J}$}};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\foreach \b in {-3,-2,0,1}{
+    \foreach \a in {0,...,\l}{
+            \draw[draw=blue!80!black, line width=0.40mm] ( \c +\a, \v +2*\v*\b  )-- ( \c+\a, \v + \h+2*\v*\b );
+    }
+}
+\foreach \b in {-1}{
+    \foreach \a in {1,2,\lmm,\lm,\l}{
+            \draw[draw=blue!80!black, line width=0.40mm] ( \c +\a, \v +2*\v*\b  )-- ( \c+\a, \v + \h+2*\v*\b );
+    }
+}
+
+
+\foreach \b in {-2,-1,0,1}{    
+    \foreach \a in {1,3,...,\l} {
+        \draw[draw=green!80!black, line width=0.40mm] ( \a , -\d +\v+ 2*\v*\b    ) -- ( \a -\c, -\d +\v+ 2*\v*\b   +\d );
+            }   
+}
+\foreach \b in {-2,-1,1}{    
+    \foreach \a in {1,3,...,\l} {
+        \draw[draw=red!80!black, line width=0.40mm] (\a , -\d +\v+ 2*\v*\b - \v+\d )-- ( \a -\c,  -\d +\v+ 2*\v*\b - \v);
+            }   
+}
+
+\foreach \b in {0}{    
+    \foreach \a in {1,\l} {
+        \draw[draw=red!80!black, line width=0.40mm] (\a , -\d +\v+ 2*\v*\b - \v+\d )-- ( \a -\c,  -\d +\v+ 2*\v*\b - \v);
+            }   
+}
+
+\foreach \b in {-2,-1,0,1}{    
+    \foreach \a in {1,3,...,\l} {        
+        \node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W1\b\a) at ( \a , -\d +\v+ 2*\v*\b    ) {};
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B2\b\a) at ( \a + \c, \v + 2*\v*\b   ) {};
+        \node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W3\b\a) at ( \a +1, -\d +\v+ 2*\v*\b    ) {};
+
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B2r\b\a) at ( \a + \c+1, -\d +\v+ 2*\v*\b+\d   ) {}; 
+    	
+    }   
+}
+\foreach \b in {-2,-1,1}{    
+    \foreach \a in {1,3,...,\l} {        
+        \node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B4\b\a) at ( \a +1, -\d +\v+ 2*\v*\b - \v+\d)  {};
+     	\node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W5\b\a) at ( \a -\c + 1, -\d +\v+ 2*\v*\b - \v) {};  	
+    	\node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W5r\b\a) at ( \a -\c + 2, -\d +\v+ 2*\v*\b - \v) {};    
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B6\b\a) at  ( \a , -\d +\v+ 2*\v*\b - \v+\d ) {};
+    	
+    }   
+}
+\foreach \b in {0}{    
+    \foreach \a in {1,\lmm,\l} {        
+        \node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B4\b\a) at ( \a +1, -\d +\v+ 2*\v*\b - \v+\d)  {};
+     	\node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W5\b\a) at ( \a -\c + 1, -\d +\v+ 2*\v*\b - \v) {};  	
+    	\node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W5r\b\a) at ( \a -\c + 2, -\d +\v+ 2*\v*\b - \v) {};
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B6\b\a) at  ( \a , -\d +\v+ 2*\v*\b - \v+\d ) {};
+    	
+    	% the following nodes are quite unnecessary, they are in the same spot as others nodes
+        \node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W1\b\a) at ( \a , -\d +\v+ 2*\v*\b    ) {};
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B2\b\a) at ( \a + \c, \v + 2*\v*\b   ) {};
+        \node[circle, fill=white, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (W3\b\a) at ( \a +1, -\d +\v+ 2*\v*\b    ) {};
+    	\node[circle, fill=black, draw=black, line width=0.40mm, inner sep=2pt, minimum size=2pt] (B2r\b\a) at ( \a + \c+1, -\d +\v+ 2*\v*\b+\d   ) {}; 
+    	
+    }   
+}
+
+\foreach \b in {-2,-1,0,1} {    
+    \foreach \a in {1,3,...,\l} { 
+        \draw[draw=red!80!black, line width=0.40mm] (B2\b\a)-- (W1\b\a);
+        \draw[draw=green!80!black, line width=0.40mm] (B2\b\a)--(W3\b\a);
+        \draw[draw=red!80!black, line width=0.40mm] (B2r\b\a)-- (W3\b\a);
+
+            }   
+}
+
+\foreach \b in {-2,-1,1} { 
+    \foreach \a in {1,3,...,\l} { 
+        \draw[draw=green!80!black, line width=0.40mm] (W5\b\a)--(B6\b\a);  
+        \draw[draw=blue!80!black, line width=0.40mm] (W3\b\a)--(B4\b\a);   
+        \draw[draw=red!80!black, line width=0.40mm] (B4\b\a)-- (W5\b\a);
+        \draw[draw=green!80!black, line width=0.40mm] (W5r\b\a)--(B4\b\a); 
+        \draw[draw=blue!80!black, line width=0.40mm] (W1\b\a)--(B6\b\a);
+        }   
+}
+\foreach \b in {0} { 
+    \foreach \a in {1,\lmm,\l} { 
+        \draw[draw=green!80!black, line width=0.40mm] (W5\b\a)--(B6\b\a);  
+        \draw[draw=blue!80!black, line width=0.40mm] (W3\b\a)--(B4\b\a);   
+        \draw[draw=red!80!black, line width=0.40mm] (B4\b\a)-- (W5\b\a);
+        \draw[draw=green!80!black, line width=0.40mm] (W5r\b\a)--(B4\b\a); 
+        \draw[draw=blue!80!black, line width=0.40mm] (W1\b\a)--(B6\b\a);
+        }   
+}
+
+        
+
+
+
+
+
+
+
+
+
+\end{tikzpicture}
+\end{document}

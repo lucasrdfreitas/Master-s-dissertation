@@ -1,0 +1,299 @@
+\label{ch:2}
+The Kitaev and related models attracted much interest in both theoretical and experimental communities in the last decade. Remarkably, they exhibit an exact \acrshort{qsl} ground state and potentially can be experimentally realized in Mott insulating magnets with strong spin-orbit coupling \cite{Jackeli_2009, trebst2017kitaev, takagi2019}. These reasons show how peculiar and fascinating the Kitaev model is.
+
+Another remarkable property of the model is its elementary excitations. The low energy spin excitations about the ground state fractionalize into Majorana fermions and $\mathbb{Z}_2$-vortices. Depending on the anisotropy of the interaction between the spins, at zero magnetic fields, the ground state can happen in two classes of phases. There are three similar but algebraically distinct gapped phases: $A^x,A^y,A^z$. This phase includes the strong anisotropic limit in which the Majoranas and the vortices have Abelian anyonic statistics. On the flip side, there is a fourth phase, named $B$, in which the Majoranas are gapless. This work will to most of its extent be center on the isotropic limit, which happens inside this phase.
+
+Importantly, the $B$ phase becomes gapped in the presence of a magnetic field, which gives topological non-trivial properties such as non-Abelian anyonic statistics and non-zero Chern number for the Majorana fermions living in this phase.
+
+This chapter has the fundamental purpose of introducing the reader to the well-known theory \cite{Kitaev_2006} of the Kitaev honeycomb model assuming a system with periodic boundary conditions. 
+
+\begin{comment}
+\textcolor{red!40!black}{
+ The chapter will be divided as follow:
+\begin{itemize}
+    \item shortly describing the model without magnetic field   (basically chapters $1$,$2$ and $4$ of the article ): describe the lattice, the Hamiltonian, the transformation to Majorana, bond variable, flux sectors, a solution with Fourier transform, the phase diagram and the \textbf{dispersion}; 
+    \item with magnetic field in perturbation theory (chapter $6$ of the article );
+    \item about the elementary excitation (chapters $7$ and $8$).
+\end{itemize}
+The purpose of the chapter is to tell the relevant aspects of the model. I will not prove anything.
+}
+(HERE DESCRIBE THE LATTICE: HONEYCOMB, EVEN-ODD, PICTURE)
+\end{comment}
+
+
+
+
+\section{The model}
+
+
+The Kitaev model consists of spins-1/2 in a lattice of coordination three with Ising-like interactions between \acrfull{nn} spin depending upon the bond type. In addition, I can consider the effects of time-reversal symmetry breaking term due to a magnetic field. In this work, I will work with the two-dimensional Kitaev model, which has a honeycomb type lattice. 
+
+The honeycomb lattice is bipartite. This means that it can be subdivided in two triangular sub-lattices which are denoted by \say{even} sublattice $\mathcal{L}_{\text{E}} $ (white circle) and the  \say{odd} $ \mathcal{L}_{\text{O}}$ (black circles) which are shown in figure \ref{fig:lattice_zigzag}. 
+
+
+
+
+%The literature do not have a consensus in the notation for the Kitaev operator and the letter for the interaction.
+There is no consensus in the literature regarding the notation for the Kitaev model. I will follow Kitaev's notation and use $J^{\gamma}$ for the interaction and write the spin operators in terms of the Pauli operators
+\begin{equation}
+    S^{\gamma}_j \; = \; \frac{1}{2} \sigma^{\gamma}_{j} \;, \quad  \text{for } \gamma = x,y,z.
+\end{equation}
+Where the spin operators obey the $\textrm{SU}(2)$ algebra, e.g.
+\begin{equation}
+    [ \, S^{x}_j , S^{y}_k \, ] \; = \; \im \delta_{jk}  \, S^{z}_j \; .
+\end{equation}
+\begin{figure}[h]
+    \centering
+    \scalebox{1.5}{\input{Tikz/CH2/T:2-kitaev-lattice}}
+    \caption{Honeycomb lattice with unit cell along the vertical direction. The unit vectors $n_1=(\frac{1}{2},\frac{\sqrt{3}}{2})$ and $n_2=(-\frac{1}{2},\frac{\sqrt{3}}{2})$ are the basis vector that span a triangular Bravais lattice, and $e_1$, $e_2$ and $e_3$ are the \acrshort{nn} vectors (with length $1/\sqrt{3}$). Colors red, green and blue along the bonds represent a Ising-like interactions $J_x \sigma^{x}_{j}\sigma^{x}_{j+e_3}$, $J_y\sigma^{y}_{j}\sigma^{y}_{j+e_2}$ and $J_z \sigma^{z}_{j}\sigma^{z}_{j+e_1}$ respectively.
+    }
+    \label{fig:lattice_zigzag}
+\end{figure}
+
+
+The Kitaev model is described by a sum of local bilinears in the spin, which depend upon the direction of the bond. The Hamiltonian is
+\begin{equation}
+    H \; = \; -   \, \sum_{\, \langle i,j \rangle_{\gamma} }  \, J_{\gamma} \sigma_{i}^{\gamma} \sigma_{j}^{\gamma} \; , %    \; - \; \kappa  \sum_{ \,  \langle i,j,k \rangle_{\gamma} }   \sigma_{i}^{x} \sigma_{j}^{y} \sigma_{k}^{z} \; ,
+\end{equation}
+where $ \sigma_{i}^{\gamma}$ is the Pauli operator in the $\gamma \in \{ x , y , z \} $ direction at the position $i$ on the honeycomb lattice. The sum on the first term runs over \acrshort{nn} sites. %The second term is the contribution of the magnetic field in third order in the perturbation theory and the sum is over .
+
+
+
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \scalebox{1.5}{\input{Tikz/CH2/T:2-plaq-notation} } 
+        \caption{Notation for the sites in a plaquette.}
+        \label{fig:2-plaquette-notation}
+    \end{subfigure} \hspace{5mm}%
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \scalebox{1.5}{\input{Tikz/CH2/T:2-plaquette-spin} }
+        \caption{Wilson operator and the spins point outwards.% Similar to magnetic flux.
+        }
+        \label{fig:2-plaquette-spin}
+    \end{subfigure}
+\caption{Each plaquette $p$ in the honeycomb lattice contain six sites $j=p_1,...,p_6$. The notation used follows Kitaev. Note that black circles have even subindex and white circle have odd subindex in agreement to the sublattice names. A Wilson loop operator $W_p$ is defined for each plaquette $p$ by the equation.}
+\end{figure}
+%\begin{figure}[h!]  \begin{minipage}{.2\textwidth}    \centering    \scalebox{1.5}{\input{Tikz/CH2/T:2-plaq-notation} }   \end{minipage}%  \begin{minipage}{.8\textwidth}    \centering    \scalebox{1.5}{\input{Tikz/CH2/T:2-plaquette-spin} }  \end{minipage}  \end{figure}
+
+
+The Hamiltonian has an extensive number for local conservation law; for each plaquette $p$ of the honeycomb lattice, it is define the Wilson loop $W_p$ as
+  \begin{equation}
+W_{p} \; = \;  \sigma_{p_1}^{x}\sigma_{p_2}^{y}\sigma_{p_3}^{z}\sigma_{p_4}^{x}\sigma_{p_5}^{y}\sigma_{p_6}^{z} \label{eq:2-WL1}
+\end{equation}
+which takes eigenvalues $\pm 1$, commutes with the Hamiltonian and with Wilson loops for other plaquettes. Hence, the Hilbert space is divided into subspaces labeled by the set of eigenvalues $\{ W_p \}$ for every hexagon. The states for which all eigenvalues of the Wilson line are $+1$ are called zero-flux states. The ground state is one of these states as it is assured by the Lieb theorem \cite{Lieb_1994} for all nonzero values of $J^{\gamma}$.  By contrast, I call a vortex a plaquette in which this eigenvalue is -1. %In the isotropic case and with no magnetic field the energy cost to create one vortex in the vacuum is about $\Delta_{\text{vortex}} \sim 0.15 \, J $. Even though, the cost to create pair of vortex is lower than create to isolated vortex (vortex interaction is negative),
+
+%The spin operator can be written as bilinear of Hermitean anti-commuting operators called Majorana fermions.
+A set of Majorana fermions can be used to rewrite the spin operator. % A simple representation  used to put the Hamiltonian in a simple form consists in introduce four Majoranas $(b^{x}_{j}, b^{y}_{j}, b^{z}_{j} , c_{j})$ per site by
+Kitaev introduced a representation in a four-dimensional Fock space in terms of four Majoranas per site. There are three operators, namely $b^{x}_{j}, b^{y}_{j}$ and $ b^{z}_{j}$, that appear symmetrically in the transformation, and a fourth one, $c_j$, that will play a special role in the physics.% and thus deserve a different notation. 
+
+
+The Kitaev representation is 
+\begin{align}
+    \sigma^{\gamma}_{j} \; & = \; \im b^{\gamma}_{j} c_{j} \; ,  \label{eq:2-maj-t}
+\end{align}
+the Majorana fermions are Hermitean anti-commuting operators and I am normalizing they so that
+\begin{align}
+    ( b^{x}_{j} )^2 \; &= \;   ( b^{y}_{j} )^2 \; = \;  ( b^{z}_{j} )^2 \; = \;  (c_{j} )^2  \; = \; 1 \; . 
+\end{align}
+This representation is not the simplest way to write a spin operator in terms o Majoranas. Indeed, there are faithful representations in terms of three Majoranas. Besides, the four-dimensional space in which the Majorana act is greater than the physical Hilbert space of spin. As a result, I then need to restrict to the two-dimensional subspace of states $\left\{  \left\vert \Psi_{\text{physical}} \right\rangle \right\} $  that obey the local $\mathbb{Z}_2$ constraint. The physical states are the eigenstates with eigenvalue +1 for the Hermitian operator $D_j$,
+\begin{align}
+    D_{j} \left\vert \Psi_{\text{physical}} \right\rangle  \; = \;% b^{x}_{j} b^{y}_{j} b^{z}_{j}  c_{j} \left\vert \Psi_{\text{physical}} \right\rangle \; &= \; 
+    \left\vert \Psi_{\text{physical}} \right\rangle  \; , \label{eq:2-gauge-operator}
+\end{align}
+where $D_{j} = b^{x}_{j} b^{y}_{j} b^{z}_{j} c_{j}$ and it implement a $\mathbb{Z}_2$ gauge transformation
+\begin{equation}
+    \begin{split}
+            c_j \; \longrightarrow \;  D_{j} c_j D_{j} \; &= \; - c_j \; ,  \\
+    b^{\gamma}_j \; \longrightarrow \;  D_{j} b^{\gamma}_j D_{j} \; &= \; - b^{\gamma}_j \; .
+    \end{split} \label{eq:2-gauge-trans}
+\end{equation}
+The spin operators are invariant by this transformation.
+
+Restrict to the Hilbert spaces of physical states in \eqref{eq:2-maj-t} is compatible with the fundamental representation for half-spins. % (i.e. half of Pauli matrices). %and it is needed for identifying the Hilbert space of the spin system as the two-dimensional subspace inside the four-dimension Fock space where the Majorana operators act.
+Moreover, we will work in the extended space and the physical states are understood as the projection in the physical subspace. As a result, any states related by the transformation yields the same physical state, for this reason, they are said to be on different gauges. As well as the transformation is sometimes called $\mathbb{Z}_2$ gauge transformation, since the gauge transformation satisfies identically $D_j^2 =(b^{x}_{j} b^{y}_{j} b^{z}_{j}  c_{j})^2 = 1$.
+% The gauge transformation satisfies $(b^{x}_{j} b^{y}_{j} b^{z}_{j}  c_{j})^2 = 1$ and is sometimes called   
+
+
+This choice of representation is useful because the model is in a honeycomb lattice. To see this, note that for each point $j$ in the Honeycomb lattice, there are three (next) neighboring points. The spin representation in four fermions permits associate one Majorana per site ($c_j$) and on for Majorana for each side of the bond ($b_j^x$,$b_j^y$,$b_j^z$).
+
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \scalebox{1.8}{\input{Tikz/CH2/T:2-Maj-Spin} } 
+        \caption{It is shown a $x$-link between the spins at $j$ and $k=j+\bf{e}_3$.}
+        \label{fig:2-spin-to-maj1}
+    \end{subfigure} \hspace{5mm}%
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \scalebox{0.5}{\input{Tikz/CH2/T:2-Maj-rep-w-label} }
+        \caption{Spins being represented by four Majoranas.}
+        \label{fig:2-spin-to-majorana2}
+    \end{subfigure}
+\caption{The circles colored by red, green, and blue represent the Majorana fermions $b^{x}$,$b^{y}$, and $b^{z}$ respectively while the black circle represent the Majorana fermion $c$. Considering all site, the $b$ fermions are paired at each bond. }
+\end{figure}
+
+
+The two-spin term in the  Hamiltonian is a sum of local terms $\sigma^{\gamma}_{j} \sigma^{\gamma}_{k} = -$ $ \im ( \im b^{\gamma}_{j} b^{\gamma}_{k} ) c_{j} c_{k}$ which can be expressed in terms of an Hermitian operator defined for each link $(j,k)$
+\begin{equation}
+    \hat{u}_{jk} = \im b_{j}^{\gamma_{jk}} b_{k}^{\gamma_{jk}} = -\hat{u}_{kj}  \quad , \quad \text{for } j,k \quad \text{NN} \;  .
+\end{equation}
+Similar to the Wilson loop, these operators have eigenvalues $\pm 1$  and commute with the Hamiltonian and with each other. On the other hand, the restriction to the physical subspace (where $b^{x}_{j} b^{y}_{j} b^{z}_{j}  c_{j} = 1$) makes more than one configuration of the eigenvalues $u_{jk}$ equivalent. The set of subspaces that send each other by transformation $b^{x}_{j} b^{y}_{j} b^{z}_{j}  c_{j}$ are in the same eigenspace determined by the Wilson loop operator. Interpreting the Wilson loop as a flux (like \say{magnetic} flux), the bond operators $\hat{u}_{jk}$ are gauge fields (like the \say{vector potential}).
+
+\begin{figure}[h!]
+  \begin{minipage}{.2\textwidth}
+    \centering
+    \scalebox{1.3}{\input{Tikz/CH2/T:2-plaquette-gauge} }
+    %\includegraphics{}
+    %\caption{Caption}
+    %\label{fig:my_label}
+    % \text{[PUT A FIGURE]}
+  \end{minipage}%
+  \begin{minipage}{.8\textwidth}
+\begin{equation}
+        \begin{split}
+       W_{p} \; &= \; - \,  \hat{u}_{p_1p_2}\hat{u}_{p_2p_3}\hat{u}_{p_3p_4}\hat{u}_{p_4p_5}\hat{u}_{p_5p_6}\hat{u}_{p_6p_1} \\[8pt]  \; &= \; \prod_{(j,k)\in \partial p} \, \hat{u}_{jk} \; , \;  \text{s.t. } j \in \mathcal{L}_{\text{E}}  \; ,\; k \in \mathcal{L}_{\text{O}} \; .
+   \end{split}
+\end{equation}
+  \end{minipage}
+  \end{figure}
+  
+  
+The zero flux sector, where all $W_p = +1$, can be achieved by more than one configuration of $\{u_{ij}\}$. It is said that these configurations are different gauges of $u$. A particular simple gauge is one that has a translation invariance, for example 
+\begin{equation}
+    u_{jk} \; = \; +1 \quad  \text{ for } (j,k) \text{ NN}, \;  j \in \mathcal{L}_{\text{E}} \; \text{and} \;  k \in \mathcal{L}_{\text{O}} \; , \label{eq:2-gauge-fix}
+\end{equation}
+which is called the \say{standard} gauge.
+
+\section{Ground state and phases}
+%Excited states of the Hamiltonian must harbor vortex. In the Kitaev model without magnetic field the vortices do not have dynamics and there is a exact solution for this model. %Lets describer how the system behaves without the magnetic term. The time reversal symmetry is restored and form the hamiltonian in a fixed flux sector is
+The hamiltonian in a fixed flux sector is
+\begin{equation}
+    \begin{split}
+        H_{0} \; &= \; \sum_{\,i,j } \frac{\im }{ 4} \, A_{jk} c_j c_k  \; , \\
+        \text{where } \quad A_{jk} \;  &= \; 2 \, J_{\gamma_{jk}} \, u_{jk} \; .
+    \end{split}
+\end{equation}
+Within  each flux sector, the gauge fields  $ u_{jk} = \pm 1$ are just numbers, which makes the Hamiltonian quadratic and the theory is indeed soluble since it is a free theory for the $c$'s fermions. In particular, to find the ground state we can work in the zero flux sector in the standard gauge \eqref{eq:2-gauge-fix}.
+
+Each site $j$ in the lattice can be described by the position $\sigma$  inside the unit cell, which tells if the point is \say{Even}(White) or \say{Odd}(Black), and the index $s$ for the position of the unit cell $\bf{r}_s = s_1 \bf{n}_1 + s_2 \bf{n}_2$. This identification allows me to write  $j = (s,\sigma)$ and then rewrite the Hamiltonian as $H = (\im/4) \sum_{s,\sigma , t , \rho} A_{s\sigma , t \rho} c_{s\sigma} c_{t \rho}$.
+
+Performing the Fourier transform, the transformed Hamiltonian matrix and Majorana fermion are 
+\begin{align}
+    H \; &= \; \frac{1}{2} \, \sum_{ \bf{q} \in \text{BZ} } \sum_{\sigma , \rho } \, \im 
+    \tilde{A}_{\sigma \rho}( \bf{q} ) \,  c_{\bf{q} \sigma}^{\dagger}  c_{\bf{q} \rho}  \label{eq:2-h-fourier-ia}\\[6pt] 
+     \tilde{A}_{\sigma \rho}( \bf{q} )  \; &= \;  \sum_{t} \, e^{\im \bf{q}\cdot \bf{r}_t} A_{0\sigma,t\rho} \; \label{eq:2-fourier-h} , \\[6pt]
+    c_{\bf{q} \sigma} \; &= \; \frac{1}{\sqrt{2N}} \, \sum_{s} \, e^{- \im \bf{q} \cdot \bf{r}_s } c_{s\rho} \; ,
+\end{align}The sum over the vectors $\bf{r}_t$ run through all unit cells $N$, and only non-zero terms are the \acrshort{nn}. The Fourier transform of the Majorana operators yields complex fields such that $c_{\bf{q} \sigma}^{\dagger} = c_{-\bf{q} \sigma}$. These complex fields satisfy the usual anticommutation relations for complex fermions as long as we restrict the momentum to \acrfull{hbz}. The \acrfull{bz} is defined modulo\footnote{%The equivalent relation of take vector within the first Brillouin Zone. 
+Two vector in the momentum space are said to be equivalent if it difference is a integer linear combination of the basis vector. For example, the vector $-\frac{1}{3}\bf{m}_1-\frac{2}{3}\bf{m}_2$ is in modulo equal to $\frac{2}{3}\bf{m}_1+\frac{1}{3}\bf{m}_2$ since its difference is $1 \cdot \bf{m}_1 + 1 \cdot \bf{m}_2$.  This equivalence class of reciprocal vectors define the first \acrlong{bz}. } the reciprocal lattice basis. This basis is $\bf{m}_1 = 2\pi (1,\frac{1}{\sqrt{3}})$, $\bf{m}_2 = 2\pi (-1,\frac{1}{\sqrt{3}})$ and it is dual to $(\bf{n}_1 , \bf{n}_2)$ in the sense that $\bf{n}_i \cdot \bf{m}_j = 2 \pi \delta_{ij}$.
+
+The Hermitean two-by-two matrix $\im \tilde{A}(\bf{q})$, in equations \eqref{eq:2-h-fourier-ia} and \eqref{eq:2-fourier-h}, is 
+\begin{equation}
+    \im \tilde{A}(\bf{q}) \; = \;\left( \begin{array}{cc}
+         0&\im f(\bf{q})   \\
+        -\im f(\bf{q})^{\ast}  & 0 
+    \end{array}  \right)\,  \label{eq:2-fourier-A} \; ,  %\bf{d}_{\bf{q}} \cdot \bm{\sigma} \; ,
+\end{equation}
+where the function $f$ is% \begin{align}     d_{\bf{q}}^{x} \; = \; -J^{x} \, \sin k_2 \; - \; J^{y} \sin (k_2 - k_1) \; , \\    d_{\bf{q}}^{y} \; = \;  -J^{z} -J^{x} \, \sin k_2 \; - \; J^{y} \sin (k_2 - k_1) \; , d_{\bf{q}}^{z} \; = \; 0 \\\end{align}
+\begin{equation}
+    f(\bf{q}) \; = \; 2 \, \left( \, J_x e^{\im \bf{q}\cdot \bf{n_1}} + J_y e^{\im \bf{q}\cdot \bf{n_2}} + J_z \, \right) \; .
+\end{equation}
+The eigenenergies for the Bloch Hamiltonian \eqref{eq:2-fourier-A} are 
+\begin{equation}
+    \epsilon(\bf{q}) \; = \; \pm \vert f(\bf{q}) \vert \; . \label{eq:2-disp}
+\end{equation}
+The system is said to be in the gapless phase when the energy \eqref{eq:2-disp} can be zero, i.e. whether there is a solution to $f(\bf{q}) = 0 $, which precisely happens when $J_x e^{\im k_1} + J_y e^{\im k_2} + J_z = 0$. The sum of three complex numbers equals zero if its modulus $|J^x|$, $|J^y|$, and $|J^z|$ satisfy the triangle inequality. Explicitly, there are gapless solutions if the couplings obey\begin{align}
+\vert J_x \vert \;  + \; \vert J_y \vert \;  & \leq \; \vert J_z \vert \; , \\
+\vert J_z \vert  \; + \; \vert J_x \vert  \; & \leq \; \vert J_y \vert \; , \\
+\vert J_y \vert \;  + \; \vert J_z \vert  \; & \leq \; \vert J_x \vert \;  .
+\end{align}%In the figure, it is shown the phase diagram for positive coupling.
+When the system does not have \textit{real} solutions to $f(\bf{q}) = 0$, it is in a gapped phase. The schematic phase diagram is shown in figure \ref{fig:2-triangle-phase-diag}. When one coupling is large enough relative to the others, the system comes towards some $A$ phase, e.g. for $J_z \gg J_x, J_y$ the system is in the $A^z$ phase. In contrast, near the isotropic coupling limit $J_x=J_y=J_z$ the system is in the $B$ phase.
+
+\begin{figure}[t]
+    \centering
+    \framebox[.7\textwidth][r]{\includegraphics[width=1.25\textwidth ]{Tikz/CH2/T:2-triangle.tex}}
+    %\scalebox{0.6}{\input{Tikz/CH2/T:2-triangle} }%
+    \caption{Section of the phase diagram for the Kitaev model in absence of magnetic field. There is one gapless phase, $B$, and three disjointed gapped phases, $\{A_{\gamma}\}$. It only showed the section of the phase diagram by the plane $J_x + J_y+J_z = 1$ and positive couplings.  }%
+    \label{fig:2-triangle-phase-diag}%
+\end{figure}
+
+%believed
+
+The $A$  phase hosts two types of gapped vortices %\footnote{The original vortex of the models has divided it into two classes. One class of vortex cannot transform into the other, unless with creation or annihilation of some fermion.}
+and fermions. This phase is equivalent to the toric code \cite{Kitaev_2003, Kitaev_2006} and the excitations are Abelian anyons. Nonetheless, I am interested in (the isotropic limit of) the $B$ phase, which is deemed to be achieved in Mott-insulators\footnote{There are speculations if the $A$ phase can also be achieved in magnetic Mott-insulators \cite{takahashi2021topological}.} and give rises to a \acrshort{qsl} phase. The elementary excitations of the $B$ phase are gapless fermions and gapped vortices.
+
+In the isotropic limit of the $B$ phase, the energy dispersion is simply
+\begin{equation}
+    \epsilon(\bf{q}) \; = \; \pm 2J \, \sqrt{ \,   e^{\im \bf{q}\cdot \bf{n_1}} +  e^{\im \bf{q}\cdot \bf{n_2}} + 1 \, } \, ,
+\end{equation}
+and the gap closes at two distinct vectors\footnote{Since $e^{4 \pi \im/3} + e^{2\pi \im/3}+1 = 0$.} $\bf{q} = \pm \bf{q}_{\ast}$ with $\bf{q}_{\ast} = \frac{2}{3}\bf{m}_1+\frac{1}{3}\bf{m}_2$. Near zero energy, the is spectrum is conic. 
+
+
+The gaplessness of the $B$ phase is protected against perturbations by time-reversal symmetry\cite{Kitaev_2006}. Expressly, to transform the phase $B$ into a gapped phase we need to introduce a term that breaks the time-reversal symmetry. But why want to open a gap? A weakly gapped  fermionic system in two dimensions has topological properties measurable by the Chern number. A non-zero Chern number means that the system hosts chiral edge modes. The $A$ phase is topologically trivial since the Chern number is zero, whereas the $B$ phase \textit{under magnetic field} has a non-zero Chern number \cite{Kitaev_2006}.
+
+%[it is not particularly important, but I would like to insert a figure for the spectrum \eqref{eq:2-disp} in the ]
+
+%[ figure for the spectrum in 1 dimension ]
+
+
+\section[B phase in a magnetic field]{$B$ phase in magnetic field}
+
+What happens when the system is in a magnetic field? For a non-perturbative field the exact solvability of the model is lost, since $H_\text{Zeeman} = -\sum_j \,  \bf{h} \cdot \bf{S}_j $ couples $b^\gamma$ and $c$ Majoranas and then the model is no longer a free theory. As well as the conservation of the Wilson loops. % gauge symmetry is broken.
+However,  to maintain the model solvable, it is usual to consider the third-order\footnote{The first order in the  perturbation is zero, and the lowest order perturbation that breaks time-reversal symmetry is the third order.} in perturbation. This term captures the essence of the Zeeman interaction since it is the first order of perturbation that opens the gap. With this in mind, the Hamiltonian is: 
+\begin{equation}
+    H \; = \; -  \, \sum_{\, \langle i,j \rangle_{\gamma} }  \, J_{\gamma} \sigma_{i}^{\gamma} \sigma_{j}^{\gamma}    \; - \; \kappa  \sum_{ \,  \langle i,j,k \rangle_{\gamma} }   \sigma_{i}^{x} \sigma_{j}^{y} \sigma_{k}^{z} \; , \label{2-Ham-mag}
+\end{equation} %%%%%%%%%%%%%%%%%%%%%%%%%%%  cite article !!! %%%%%%%%%%%%%%%%%%%%%%%
+where the coupling is cubic in the magnetic field $\kappa \propto h_x h_y h_z/J^2$. %The exact value for proportionality constant $\kappa$ is not a consensus; what is know is that it depends upon the vortex gap \cite{tanaka2020}. The exact proportionality constant will give a quantitative difference that will be set to $1$ for simplicity of this work. 
+Using the transformation \eqref{eq:2-maj-t} as well as the gauge constraint \eqref{eq:2-gauge-trans}, the Hamiltonian transforms into 
+\begin{equation}
+\begin{split}
+    H \; & = \; -  \, \sum_{\, \langle j,k \rangle_{\gamma} }  \, \im J_{\gamma} \, \hat{u}_{jk} \, c_j c_k    \; - \; \kappa  \sum_{ \, \langle \langle i,k \rangle \rangle }   \, \im \hat{u}_{ij}\hat{u}_{jk} \,c_i c_k \;  \\[7pt]
+   \; & =: \;  \sum_{\,i,j } \frac{\im }{ 4} \, A_{jk} c_j c_k \; , 
+    \end{split}
+\end{equation} where the sum over  $\langle j,k \rangle$ means sum over \acrlong{nn}, while $\langle \langle i,k \rangle \rangle$ means sum over \acrlong{nnn}, and both ares sums without repetition. 
+
+%Should be noted that the Wilson loop operators are no longer conserved, so the vortices can hop between adjacent plaquettes and be fused (for the fusion rules see \cite{Kitaev_2006}). The dynamic of the vortex make the system no longer exactly solvable. However, the dispersion originated by the magnetic field is insignificant for small fields, and the vortex gap is approximately a constant. For low energetic excitation, the dynamic of the vortex is irrelevant.
+
+Moreover, the ground state still lives in the flux-free sector. If I choose the standard gauge \eqref{eq:2-gauge-fix}, the Hamiltonian is quadratic  and can be block diagonalized by the Fourier transform \eqref{eq:2-fourier-h}. The matrix obtained by Fourier transforming the Hamiltonian is 
+\begin{equation}
+    \im \tilde{A}(\bf{q}) \; = \;\left( \begin{array}{cc}
+         \Delta (\bf{q} ) &\im f(\bf{q})   \\
+        -\im f(\bf{q})^{\ast}  & -\Delta(\bf{q}) 
+    \end{array}  \right)\, , \label{eq:2-fourier-A-withB} %\bf{d}_{\bf{q}} \cdot \bm{\sigma} \; ,
+\end{equation}
+with $f$ the same function as for zero magnetic field case and $\Delta(\bf{q}) = 4 \kappa \big[ \sin (\bf{q}\cdot\bf{n}_1) $ $- \sin (\bf{q}\cdot\bf{n}_2)$ $+ \sin (\bf{q}\cdot\bf{n}_1 - \bf{q}\cdot\bf{n}_2) \big]$. The eigenvalues of the Bloch Hamiltonian are
+\begin{equation}
+    \epsilon(\bf{q}) \; = \; \pm \sqrt{ \, \vert f(\bf{q}) \vert^2 \,  +  \, \Delta(\bf{q})^2 \, } \; . \label{eq:2-disp-mag}
+\end{equation}
+Indeed, the magnetic field opens a gap in the $B$ phase. The conic dispersion are replaced by hyperbolic bands $\epsilon(  \bf{q} + \delta \bf{q}) = \pm \sqrt{ 3 J^2 \vert \delta \bf{q} \vert + \Delta_f^2 }$ at $\bf{q}= \pm \bf{q}_{\ast}$, and the strength of the gap is 
+\begin{equation}
+    \Delta_{f} \; := \; \Delta(\bf{q}_{\ast}) \; = \; - \Delta( - \bf{q}_{\ast} ) \; = \;  6 \sqrt{3} \, \kappa \; .
+\end{equation}
+For non-zero magnetic fields in which the product $h_xh_yh_z$ is not zero, the $B$ phase 
+
+
+In non-interacting fermionic systems with an energy gap, the Chern number is an important topological quantity. % the Chern integer is an integral over the \acrlong{bz} involving the projector operator P(k) to the lowest energy band 
+The Chern number $\nu$ is a integer that can be expressed as a integral over the Brillouin zone involving the projector operator $\tilde{P}(\bf{q}) = \frac{1}{2}\big( 1 - \bf{m}(\bf{q})\cdot\bm{\sigma} \big)$ to negative energy fermionic modes, where the vector field $\bf{m}$ is implicitly defined  via $\bf{m}(\bf{q}) \cdot \bm{\sigma} = -\text{sgn}\big( \im \tilde{A}(\bf{q}) \big)$. The Chern number is defined as 
+\begin{equation}
+    \nu \; = \;  \frac{1}{2 \pi \im } \int \, \text{Tr} \Big( \tilde{P} \, d\tilde{P} \wedge d\tilde{P} \Big) \; = \; \int \frac{dq_x \, dq_y}{4\pi} \, \left( \frac{\partial \bf{m}}{\partial q_x}\times \frac{\partial \bf{m}}{\partial q_y} \cdot \bf{m} \right) \; .
+\end{equation}
+
+%In this phase, the Chern number is non-zero and is 
+As Kitaev proved in Ref.\cite{Kitaev_2006}, for a non-zero applied magnetic field the gapped fermionic system acquires a non-zero Chern number.
+\begin{equation}
+    \nu \; = \; \text{sgn} \, \Delta_{f} \; = \; \text{sgn} \, \kappa \; = \; \text{sgn} \left( h_x h_y h_z \right) \; , 
+\end{equation}
+which take values $\pm 1$ depending on the direction of the applied field. This interesting result is an occurrence of the bulk-edge correspondence. The topological insulator community uses this jargon to say that bulk and edge are intrinsically related to each other, even though they behave differently. %Moreover, by studying one part of the system there is the information on the other part. 
+As described before, the gapped fermions in the material give enough information to conclude that the fermionic excitations in the edge are chiral gapless fermions. In contrast, a topologically trivial system does not host localized zero-energy modes in the edge.
+
+In this chapter, I used the standard approach to the isotropic Kitaev model considering periodic boundary condition.  That is, for material without edges. Altogether, I have apprised you that the bulk excitations are gapped. And, by studying these excitations, it was possible to discover the existence of chiral modes at the edge.  On the other hand, this geometry cannot give further information about the edge modes. In the next chapter, I will explore more about the edge modes in a system with two edges.
+
+
+The discussion that I gave about the model was restricted to perturbative fields under magnetic field. The reader may wonder \textit{what happens in the strong field limit?} The model is no longer solvable. there should be a topological phase transition, at finite $h_{\star}$ to a trivial state. Experimental results endorse this theoretical expectation, \cite{Kasahara_2018}, which may describe a transition to non-topological spin liquid or a trivial polarized state. For instance, the transition is believed to occurs near $h_{\star} \sim 9 \text{T}$ for \acrshort{rucl}.
+
+
+
+
