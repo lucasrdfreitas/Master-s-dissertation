@@ -3,7 +3,7 @@
 
 
 \textcolor{red!40!black}{
-This chapter is a continuation of the previous chapter in which I will get into the calculation for the Kitaev Honeycomb model for a system open in one direction. It will be similar to the appendix $B$ of \cite{Kitaev_2006}. However, Kitaev had considered a system with only one edge, whereas we will consider rectangular with one direction periodic and the other open. Likewise to Kitaev's approach I will only consider a edge of the ZigZag type (it is not straightforward extended to other types of edges; the edge spectrum depends strongly on the type of the edge, but we expect that the qualitative behaviour of the low-energy excitation are unchanged). The chapter will be divided as follows
+This chapter is a continuation of the previous chapter in which I will get into the calculation for the Kitaev Honeycomb model for a system open in one direction. It will be similar to the appendix $B$ of \cite{Kitaev_2006}. However, Kitaev had considered a system with only one edge, whereas we will consider rectangular with one direction periodic and the other open. Likewise to Kitaev's approach I will only consider a edge of the zigzag type (it is not straightforward extended to other types of edges; the edge spectrum depends strongly on the type of the edge, but we expect that the qualitative behaviour of the low-energy excitation are unchanged). The chapter will be divided as follows
 \begin{itemize}
     \item explain how to obtain the hamiltonian \textbf{with} magnetic field in the \textbf{isotropic} limit [the calculation is tedious, I will be brief], mainly explain the differences that system will exhibits unpaired Majorana fermions at the edge and it will interact with the field;
     \item Numerical analysis for the dispersion. The system is gapless at zero field and it became gapped at finite field but exhibits a zero energy mode (the Dirac cone shifts from $k_x=2\pi/3$ to $k_x=0$);
@@ -115,7 +115,7 @@ Let suppose that the horizontal length (in the periodic direction) of the system
 \begin{align}
      \tilde{A}_{y_1y_2}(q)  \; &= \;  \sum_{x} \, e^{\im qx} A_{0y_1,xy_2} \; \label{eq:3-fourier-t} , \\[6pt]
     c_{q,y} \; &= \; \frac{1}{\sqrt{2\ell_x}} \, \sum_{x} \, e^{- \im q x} c_{xy} \; ,  \label{eq:3-fourier-t-c}  \\[6pt]
-    b^{z}_{q,y} \; &= \; \frac{1}{\sqrt{2\ell_x}} \, \sum_{x} \, e^{- \im q x} b^{z}_{xy} \; , \quad \text{for } y = 0 \text{ or } \ell_{y}+1 \, .
+    b^{z}_{q,y} \; &= \; \frac{1}{\sqrt{2\ell_x}} \, \sum_{x} \, e^{- \im q x} b^{z}_{xy} \; , \quad \text{for } y = 1 \text{ or } \ell_{y} \, .
 \end{align}
 The momentum is discretized in to the \acrlong{bz}: $\text{BZ}= \big\{  \frac{2\pi n}{\ell_x} \, \Big\vert \,  n = -\frac{\ell_x}{2}+1 , $ $...,\frac{\ell_x}{2} \big\}$. The normalization factors are chosen so that $c_{q,y}$ and $ b^{z}_{q,y}$ obeys the usual anticommutation relations for complex fermions when restricted to positive momentum. The restriction is called \acrfull{hbz} and it is $\frac{1}{2}\text{BZ}= \left\{  \frac{2\pi}{\ell_x}, \frac{4\pi}{\ell_x}, ,...,\pi  \right\}$. For example, with this normalization, the inverse Fourier transform for the Majorana operators is
 \begin{align}
